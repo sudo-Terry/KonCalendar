@@ -1,5 +1,7 @@
 package com.example.koncalendar.models
 
+import com.google.firebase.Timestamp
+
 /*
 CREATE TABLE category_sharing (
     user_id VARCHAR(255),
@@ -13,7 +15,9 @@ CREATE TABLE category_sharing (
 */
 
 data class CategorySharing(
-    val userId: String,
-    val targetUserId: String,
-    val targetCategoryId: String
+    var id: String = "",
+    var userId: String = "",
+    var targetUserId: String = "",
+    var targetCategoryId: String = "",
+    var createdAt: Timestamp = Timestamp.now()
 )

@@ -9,11 +9,13 @@ import com.example.koncalendar.models.CalendarCategory
 import com.example.koncalendar.models.CategorySharing
 import com.example.koncalendar.models.Schedule
 import com.example.koncalendar.utils.CalendarCategoryUtils
+import com.example.koncalendar.utils.CategorySharingUtils
 import kotlinx.coroutines.launch
 
 @Composable
 fun TestScreen(modifier: Modifier = Modifier) {
     var testCalendarCategory by remember { mutableStateOf<CalendarCategory?>(null) }
+    var testCategorySharing by remember { mutableStateOf<CategorySharing?>(null) }
     val coroutineScope = rememberCoroutineScope()
 
     val sampleCalendarCategory = CalendarCategory(
@@ -76,5 +78,38 @@ fun TestScreen(modifier: Modifier = Modifier) {
         Text(text = "User ID: ${testCalendarCategory?.userId ?: "Loading..."}")
         Text(text = "Title: ${testCalendarCategory?.title ?: "Loading..."}")
         Text(text = "Created At: ${testCalendarCategory?.createdAt ?: "Loading..."}")
+
+        Button(onClick = {
+            coroutineScope.launch {
+                val docRef = CategorySharingUtils.createCategorySharing(sampleCategorySharing)
+                if (docRef != null) {
+                    testCategorySharing = CategorySharingUtils.getCategorySharingByDocName(docRef.id)
+                }
+            }
+        }) {
+            Text("Create and Fetch Category Sharing")
+        }
+
+        // Update Category Sharing Button
+        if (testCategorySharing != null) {
+            Button(onClick = {
+                coroutineScope.launch {
+                    val docName = testCategorySharing!!.id
+                    val updatedSharing = testCategorySharing!!.copy(
+                        userId = if (testCategorySharing!!.userId == "userId123") "userId123123" else "userId123"
+                    )
+
+                    CategorySharingUtils.updateCategorySharing(docName, updatedSharing)
+                    testCategorySharing = CategorySharingUtils.getCategorySharingByDocName(docName)
+                }
+            }) {
+                Text("Update Category Sharing ${testCategorySharing!!.id}")
+            }
+        }
+
+        Text(text = "Category Sharing ID: ${testCategorySharing?.id ?: "Loading..."}")
+        Text(text = "User ID: ${testCategorySharing?.userId ?: "Loading..."}")
+        Text(text = "Target User ID: ${testCategorySharing?.targetUserId ?: "Loading..."}")
+        Text(text = "Target Category ID: ${testCategorySharing?.targetCategoryId ?: "Loading..."}")
     }
 }
