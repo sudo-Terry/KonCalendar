@@ -10,12 +10,14 @@ import com.example.koncalendar.models.CategorySharing
 import com.example.koncalendar.models.Schedule
 import com.example.koncalendar.utils.CalendarCategoryUtils
 import com.example.koncalendar.utils.CategorySharingUtils
+import com.example.koncalendar.utils.ScheduleUtils
 import kotlinx.coroutines.launch
 
 @Composable
 fun TestScreen(modifier: Modifier = Modifier) {
     var testCalendarCategory by remember { mutableStateOf<CalendarCategory?>(null) }
     var testCategorySharing by remember { mutableStateOf<CategorySharing?>(null) }
+    var testSchedule by remember { mutableStateOf<Schedule?>(null) }
     val coroutineScope = rememberCoroutineScope()
 
     val sampleCalendarCategory = CalendarCategory(
@@ -111,5 +113,46 @@ fun TestScreen(modifier: Modifier = Modifier) {
         Text(text = "User ID: ${testCategorySharing?.userId ?: "Loading..."}")
         Text(text = "Target User ID: ${testCategorySharing?.targetUserId ?: "Loading..."}")
         Text(text = "Target Category ID: ${testCategorySharing?.targetCategoryId ?: "Loading..."}")
+
+        // Create and Fetch Schedule Button
+        Button(onClick = {
+            coroutineScope.launch {
+                val docRef = ScheduleUtils.createSchedule(sampleSchedule)
+                if (docRef != null) {
+                    testSchedule = ScheduleUtils.getScheduleByDocName(docRef.id)
+                }
+            }
+        }) {
+            Text("Create and Fetch Schedule")
+        }
+
+        // Update Schedule Button
+        if (testSchedule != null) {
+            Button(onClick = {
+                coroutineScope.launch {
+                    val docName = testSchedule!!.id
+                    val updatedSchedule = testSchedule!!.copy(
+                        userId = if (testSchedule!!.userId == "userId123") "userId123123" else "userId123"
+                    )
+
+                    ScheduleUtils.updateSchedule(docName, updatedSchedule)
+                    testSchedule = ScheduleUtils.getScheduleByDocName(docName)
+                }
+            }) {
+                Text("Update Schedule ${testSchedule!!.id}")
+            }
+        }
+
+        Text(text = "Schedule ID: ${testSchedule?.id ?: "Loading..."}")
+        Text(text = "Start Time: ${testSchedule?.startTime ?: "Loading..."}")
+        Text(text = "End Time: ${testSchedule?.endTime ?: "Loading..."}")
+        Text(text = "Start Date: ${testSchedule?.startDate ?: "Loading..."}")
+        Text(text = "End Date: ${testSchedule?.endDate ?: "Loading..."}")
+        Text(text = "Title: ${testSchedule?.title ?: "Loading..."}")
+        Text(text = "Category ID: ${testSchedule?.categoryId ?: "Loading..."}")
+        Text(text = "User ID: ${testSchedule?.userId ?: "Loading..."}")
+        Text(text = "Location: ${testSchedule?.location ?: "Loading..."}")
+        Text(text = "Description: ${testSchedule?.description ?: "Loading..."}")
+        Text(text = "Frequency: ${testSchedule?.frequency ?: "Loading..."}")
     }
 }
