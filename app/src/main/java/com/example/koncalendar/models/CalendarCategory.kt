@@ -1,4 +1,5 @@
 package com.example.koncalendar.models
+import com.google.firebase.Timestamp
 
 /*
 CREATE TABLE calendar_category (
@@ -11,8 +12,8 @@ CREATE TABLE calendar_category (
 */
 
 data class CalendarCategory(
-    val id: String,
-    val userId: String,
-    val title: String,
-    val createdAt: com.google.firebase.Timestamp = com.google.firebase.Timestamp.now()
+    var id: String = "",
+    var userId: String = "",
+    var title: String = "",
+    var createdAt: Timestamp = Timestamp.now()
 )
