@@ -15,5 +15,6 @@ data class CalendarCategory(
     var id: String = "",
     var userId: String = "",
     var title: String = "",
+    var color: String? = null,
     var createdAt: Timestamp = Timestamp.now()
 )

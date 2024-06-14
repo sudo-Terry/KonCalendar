@@ -5,6 +5,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import com.example.koncalendar.models.CalendarCategory
 import com.example.koncalendar.models.CategorySharing
 import com.example.koncalendar.models.Schedule
@@ -23,7 +24,8 @@ fun TestScreen(modifier: Modifier = Modifier) {
     val sampleCalendarCategory = CalendarCategory(
         "",
         "userId123",
-        "Test Category"
+        "Test Category",
+        color = Color.Black.toString()
     )
 
     val sampleCategorySharing = CategorySharing(
@@ -65,7 +67,8 @@ fun TestScreen(modifier: Modifier = Modifier) {
                 coroutineScope.launch {
                     val docName = testCalendarCategory!!.id
                     val updatedCategory = testCalendarCategory!!.copy(
-                        userId = if (testCalendarCategory!!.userId == "userId123") "userId123123" else "userId123"
+                        color = if (testCalendarCategory!!.color == Color.Black.toString()) Color.White.toString() else Color.Black.toString()
+                        ,userId = if (testCalendarCategory!!.userId == "userId123") "userId123123" else "userId123"
                     )
 
                     CalendarCategoryUtils.updateCalendarCategory(docName, updatedCategory)
@@ -79,6 +82,7 @@ fun TestScreen(modifier: Modifier = Modifier) {
         Text(text = "Category ID: ${testCalendarCategory?.id ?: "Loading..."}")
         Text(text = "User ID: ${testCalendarCategory?.userId ?: "Loading..."}")
         Text(text = "Title: ${testCalendarCategory?.title ?: "Loading..."}")
+        Text(text = "Title: ${testCalendarCategory?.color ?: "Loading..."}")
         Text(text = "Created At: ${testCalendarCategory?.createdAt ?: "Loading..."}")
 
         Button(onClick = {
