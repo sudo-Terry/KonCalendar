@@ -1,5 +1,7 @@
 package com.example.koncalendar.models
 
+import com.google.firebase.Timestamp
+
 /*
 CREATE TABLE schedule (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -20,15 +22,16 @@ CREATE TABLE schedule (
  */
 
 data class Schedule(
-    val startTime: String,
-    val endTime: String,
-    val startDate: String,
-    val endDate: String,
-    val title: String,
-    val categoryId: String,
-    val userId: String,
-    val location: String? = null,
-    val description: String? = null,
-    val frequency: String,
-    val createdAt: com.google.firebase.Timestamp = com.google.firebase.Timestamp.now()
+    var id: String = "",
+    var startTime: String = "",
+    var endTime: String = "",
+    var startDate: String = "",
+    var endDate: String = "",
+    var title: String = "",
+    var categoryId: String = "",
+    var userId: String = "",
+    var location: String? = null,
+    var description: String? = null,
+    var frequency: String = "",
+    var createdAt: Timestamp = Timestamp.now()
 )
