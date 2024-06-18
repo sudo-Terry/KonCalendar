@@ -83,4 +83,16 @@ object ScheduleUtils {
             false
         }
     }
+
+    suspend fun getSchedulesByCategory(categoryId: String): List<Schedule> {
+        return try {
+            val querySnapshot = firestore.collection("schedules")
+                .whereEqualTo("categoryId", categoryId)
+                .get()
+                .await()
+            querySnapshot.documents.mapNotNull { it.toObject(Schedule::class.java) }
+        } catch (e: Exception) {
+            emptyList()
+        }
+    }
 }

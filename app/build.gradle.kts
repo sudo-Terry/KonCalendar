@@ -66,6 +66,8 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.firebase.bom)
+    implementation(libs.androidx.runtime.livedata)
+    implementation(libs.androidx.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
