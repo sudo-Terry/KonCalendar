@@ -1,0 +1,807 @@
+[
+  {
+    "__type": "CalendarItem:#Exchange",
+    "ItemId": {
+      "__type": "ItemId:#Exchange",
+      "ChangeKey": "DwAAABYAAADnm6M7p7lhTKWqhaFqqNfIAAaNb1e6",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwBGAAAAAAD/Q6PH12PPS5Lu5k1vZ301BwDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAADnm6M7p7lhTKWqhaFqqNfIAAUSmaNTAAA="
+    },
+    "ParentFolderId": {
+      "__type": "FolderId:#Exchange",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwAuAAAAAAD/Q6PH12PPS5Lu5k1vZ301AQDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAAA=",
+      "ChangeKey": "AQAAAA=="
+    },
+    "Start": "2023-12-16T00:00:00+09:00",
+    "End": "2024-03-01T00:00:00+09:00",
+    "Subject": "동계 방학(12.16.토 ~ 2.29.목)",
+    "Sensitivity": "Normal",
+    "FreeBusyType": "Free",
+    "CalendarItemType": "Single",
+    "Location": {
+      "DisplayName": "",
+      "PostalAddress": {
+        "Street": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "PostalCode": null,
+        "PostOfficeBox": null,
+        "Type": "Home",
+        "LocationSource": "None"
+      },
+      "IdType": "Unknown",
+      "LocationType": "Unknown"
+    },
+    "Charm": "None"
+  },
+  {
+    "__type": "CalendarItem:#Exchange",
+    "ItemId": {
+      "__type": "ItemId:#Exchange",
+      "ChangeKey": "DwAAABYAAADnm6M7p7lhTKWqhaFqqNfIAAaiMwTx",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwBGAAAAAAD/Q6PH12PPS5Lu5k1vZ301BwDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAADnm6M7p7lhTKWqhaFqqNfIAAUSmaNSAAA="
+    },
+    "ParentFolderId": {
+      "__type": "FolderId:#Exchange",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwAuAAAAAAD/Q6PH12PPS5Lu5k1vZ301AQDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAAA=",
+      "ChangeKey": "AQAAAA=="
+    },
+    "Start": "2023-12-18T00:00:00+09:00",
+    "End": "2024-01-12T00:00:00+09:00",
+    "Subject": "동계 계절학기(편입학고사1일 제외)(12.18.월 ~ 1.11.목)",
+    "Sensitivity": "Normal",
+    "FreeBusyType": "Free",
+    "CalendarItemType": "Single",
+    "Location": {
+      "DisplayName": "",
+      "PostalAddress": {
+        "Street": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "PostalCode": null,
+        "PostOfficeBox": null,
+        "Type": "Home",
+        "LocationSource": "None"
+      },
+      "IdType": "Unknown",
+      "LocationType": "Unknown"
+    },
+    "Charm": "None"
+  },
+  {
+    "__type": "CalendarItem:#Exchange",
+    "ItemId": {
+      "__type": "ItemId:#Exchange",
+      "ChangeKey": "DwAAABYAAADnm6M7p7lhTKWqhaFqqNfIAAaiMwTv",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwBGAAAAAAD/Q6PH12PPS5Lu5k1vZ301BwDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAADnm6M7p7lhTKWqhaFqqNfIAAUSmaNVAAA="
+    },
+    "ParentFolderId": {
+      "__type": "FolderId:#Exchange",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwAuAAAAAAD/Q6PH12PPS5Lu5k1vZ301AQDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAAA=",
+      "ChangeKey": "AQAAAA=="
+    },
+    "Start": "2024-01-01T00:00:00+09:00",
+    "End": "2024-01-02T00:00:00+09:00",
+    "Subject": "신정(공휴일)",
+    "Sensitivity": "Normal",
+    "FreeBusyType": "Free",
+    "CalendarItemType": "Single",
+    "Location": {
+      "DisplayName": "",
+      "PostalAddress": {
+        "Street": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "PostalCode": null,
+        "PostOfficeBox": null,
+        "Type": "Home",
+        "LocationSource": "None"
+      },
+      "IdType": "Unknown",
+      "LocationType": "Unknown"
+    },
+    "Charm": "None"
+  },
+  {
+    "__type": "CalendarItem:#Exchange",
+    "ItemId": {
+      "__type": "ItemId:#Exchange",
+      "ChangeKey": "DwAAABYAAADnm6M7p7lhTKWqhaFqqNfIAAaiMwSP",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwBGAAAAAAD/Q6PH12PPS5Lu5k1vZ301BwDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAADnm6M7p7lhTKWqhaFqqNfIAAX7or89AAA="
+    },
+    "ParentFolderId": {
+      "__type": "FolderId:#Exchange",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwAuAAAAAAD/Q6PH12PPS5Lu5k1vZ301AQDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAAA=",
+      "ChangeKey": "AQAAAA=="
+    },
+    "Start": "2024-01-02T10:30:00+09:00",
+    "End": "2024-01-03T16:30:00+09:00",
+    "Subject": "취득학점포기(2차)",
+    "Sensitivity": "Normal",
+    "FreeBusyType": "Busy",
+    "CalendarItemType": "Single",
+    "Location": {
+      "DisplayName": "",
+      "PostalAddress": {
+        "Street": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "PostalCode": null,
+        "PostOfficeBox": null,
+        "Type": "Home",
+        "LocationSource": "None"
+      },
+      "IdType": "Unknown",
+      "LocationType": "Unknown"
+    },
+    "Charm": "None"
+  },
+  {
+    "__type": "CalendarItem:#Exchange",
+    "ItemId": {
+      "__type": "ItemId:#Exchange",
+      "ChangeKey": "DwAAABYAAADnm6M7p7lhTKWqhaFqqNfIAAaiMwSO",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwBGAAAAAAD/Q6PH12PPS5Lu5k1vZ301BwDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAADnm6M7p7lhTKWqhaFqqNfIAAX7or8+AAA="
+    },
+    "ParentFolderId": {
+      "__type": "FolderId:#Exchange",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwAuAAAAAAD/Q6PH12PPS5Lu5k1vZ301AQDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAAA=",
+      "ChangeKey": "AQAAAA=="
+    },
+    "Start": "2024-01-04T00:00:00+09:00",
+    "End": "2024-01-05T00:00:00+09:00",
+    "Subject": "성적등재",
+    "Sensitivity": "Normal",
+    "FreeBusyType": "Free",
+    "CalendarItemType": "Single",
+    "Location": {
+      "DisplayName": "",
+      "PostalAddress": {
+        "Street": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "PostalCode": null,
+        "PostOfficeBox": null,
+        "Type": "Home",
+        "LocationSource": "None"
+      },
+      "IdType": "Unknown",
+      "LocationType": "Unknown"
+    },
+    "Charm": "None"
+  },
+  {
+    "__type": "CalendarItem:#Exchange",
+    "ItemId": {
+      "__type": "ItemId:#Exchange",
+      "ChangeKey": "DwAAABYAAADnm6M7p7lhTKWqhaFqqNfIAAaiMwSN",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwBGAAAAAAD/Q6PH12PPS5Lu5k1vZ301BwDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAADnm6M7p7lhTKWqhaFqqNfIAAX7or8/AAA="
+    },
+    "ParentFolderId": {
+      "__type": "FolderId:#Exchange",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwAuAAAAAAD/Q6PH12PPS5Lu5k1vZ301AQDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAAA=",
+      "ChangeKey": "AQAAAA=="
+    },
+    "Start": "2024-01-05T00:00:00+09:00",
+    "End": "2024-01-06T00:00:00+09:00",
+    "Subject": "전체성적조회·성적증명서 출력·석차연명부 출력·성적표 e-Mail 발송(10:30~)",
+    "Sensitivity": "Normal",
+    "FreeBusyType": "Free",
+    "CalendarItemType": "Single",
+    "Location": {
+      "DisplayName": "",
+      "PostalAddress": {
+        "Street": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "PostalCode": null,
+        "PostOfficeBox": null,
+        "Type": "Home",
+        "LocationSource": "None"
+      },
+      "IdType": "Unknown",
+      "LocationType": "Unknown"
+    },
+    "Charm": "None"
+  },
+  {
+    "__type": "CalendarItem:#Exchange",
+    "ItemId": {
+      "__type": "ItemId:#Exchange",
+      "ChangeKey": "DwAAABYAAADnm6M7p7lhTKWqhaFqqNfIAAaiMwSM",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwBGAAAAAAD/Q6PH12PPS5Lu5k1vZ301BwDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAADnm6M7p7lhTKWqhaFqqNfIAAX7or9AAAA="
+    },
+    "ParentFolderId": {
+      "__type": "FolderId:#Exchange",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwAuAAAAAAD/Q6PH12PPS5Lu5k1vZ301AQDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAAA=",
+      "ChangeKey": "AQAAAA=="
+    },
+    "Start": "2024-01-05T10:30:00+09:00",
+    "End": "2024-01-08T16:30:00+09:00",
+    "Subject": "취득학점포기(3차)",
+    "Sensitivity": "Normal",
+    "FreeBusyType": "Busy",
+    "CalendarItemType": "Single",
+    "Location": {
+      "DisplayName": "",
+      "PostalAddress": {
+        "Street": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "PostalCode": null,
+        "PostOfficeBox": null,
+        "Type": "Home",
+        "LocationSource": "None"
+      },
+      "IdType": "Unknown",
+      "LocationType": "Unknown"
+    },
+    "Charm": "None"
+  },
+  {
+    "__type": "CalendarItem:#Exchange",
+    "ItemId": {
+      "__type": "ItemId:#Exchange",
+      "ChangeKey": "DwAAABYAAADnm6M7p7lhTKWqhaFqqNfIAAaiMwSJ",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwBGAAAAAAD/Q6PH12PPS5Lu5k1vZ301BwDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAADnm6M7p7lhTKWqhaFqqNfIAAX7or9DAAA="
+    },
+    "ParentFolderId": {
+      "__type": "FolderId:#Exchange",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwAuAAAAAAD/Q6PH12PPS5Lu5k1vZ301AQDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAAA=",
+      "ChangeKey": "AQAAAA=="
+    },
+    "Start": "2024-01-11T00:00:00+09:00",
+    "End": "2024-01-15T00:00:00+09:00",
+    "Subject": "동계 계절학기 성적 입력 및 공시",
+    "Sensitivity": "Normal",
+    "FreeBusyType": "Free",
+    "CalendarItemType": "Single",
+    "Location": {
+      "DisplayName": "",
+      "PostalAddress": {
+        "Street": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "PostalCode": null,
+        "PostOfficeBox": null,
+        "Type": "Home",
+        "LocationSource": "None"
+      },
+      "IdType": "Unknown",
+      "LocationType": "Unknown"
+    },
+    "Charm": "None"
+  },
+  {
+    "__type": "CalendarItem:#Exchange",
+    "ItemId": {
+      "__type": "ItemId:#Exchange",
+      "ChangeKey": "DwAAABYAAADnm6M7p7lhTKWqhaFqqNfIAAaiMwSL",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwBGAAAAAAD/Q6PH12PPS5Lu5k1vZ301BwDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAADnm6M7p7lhTKWqhaFqqNfIAAX7or9BAAA="
+    },
+    "ParentFolderId": {
+      "__type": "FolderId:#Exchange",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwAuAAAAAAD/Q6PH12PPS5Lu5k1vZ301AQDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAAA=",
+      "ChangeKey": "AQAAAA=="
+    },
+    "Start": "2024-01-11T00:00:00+09:00",
+    "End": "2024-01-12T00:00:00+09:00",
+    "Subject": "동계 계절학기 기말고사 및 종강",
+    "Sensitivity": "Normal",
+    "FreeBusyType": "Free",
+    "CalendarItemType": "Single",
+    "Location": {
+      "DisplayName": "",
+      "PostalAddress": {
+        "Street": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "PostalCode": null,
+        "PostOfficeBox": null,
+        "Type": "Home",
+        "LocationSource": "None"
+      },
+      "IdType": "Unknown",
+      "LocationType": "Unknown"
+    },
+    "Charm": "None"
+  },
+  {
+    "__type": "CalendarItem:#Exchange",
+    "ItemId": {
+      "__type": "ItemId:#Exchange",
+      "ChangeKey": "DwAAABYAAADnm6M7p7lhTKWqhaFqqNfIAAaiMwSK",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwBGAAAAAAD/Q6PH12PPS5Lu5k1vZ301BwDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAADnm6M7p7lhTKWqhaFqqNfIAAX7or9CAAA="
+    },
+    "ParentFolderId": {
+      "__type": "FolderId:#Exchange",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwAuAAAAAAD/Q6PH12PPS5Lu5k1vZ301AQDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAAA=",
+      "ChangeKey": "AQAAAA=="
+    },
+    "Start": "2024-01-12T00:00:00+09:00",
+    "End": "2024-01-13T00:00:00+09:00",
+    "Subject": "휴·복학 신청 개시",
+    "Sensitivity": "Normal",
+    "FreeBusyType": "Free",
+    "CalendarItemType": "Single",
+    "Location": {
+      "DisplayName": "",
+      "PostalAddress": {
+        "Street": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "PostalCode": null,
+        "PostOfficeBox": null,
+        "Type": "Home",
+        "LocationSource": "None"
+      },
+      "IdType": "Unknown",
+      "LocationType": "Unknown"
+    },
+    "Charm": "None"
+  },
+  {
+    "__type": "CalendarItem:#Exchange",
+    "ItemId": {
+      "__type": "ItemId:#Exchange",
+      "ChangeKey": "DwAAABYAAADnm6M7p7lhTKWqhaFqqNfIAAaiMwSI",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwBGAAAAAAD/Q6PH12PPS5Lu5k1vZ301BwDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAADnm6M7p7lhTKWqhaFqqNfIAAX7or9EAAA="
+    },
+    "ParentFolderId": {
+      "__type": "FolderId:#Exchange",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwAuAAAAAAD/Q6PH12PPS5Lu5k1vZ301AQDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAAA=",
+      "ChangeKey": "AQAAAA=="
+    },
+    "Start": "2024-01-12T00:00:00+09:00",
+    "End": "2024-01-14T00:00:00+09:00",
+    "Subject": "동계 계절학기 성적 이의신청(교강사 정정)",
+    "Sensitivity": "Normal",
+    "FreeBusyType": "Free",
+    "CalendarItemType": "Single",
+    "Location": {
+      "DisplayName": "",
+      "PostalAddress": {
+        "Street": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "PostalCode": null,
+        "PostOfficeBox": null,
+        "Type": "Home",
+        "LocationSource": "None"
+      },
+      "IdType": "Unknown",
+      "LocationType": "Unknown"
+    },
+    "Charm": "None"
+  },
+  {
+    "__type": "CalendarItem:#Exchange",
+    "ItemId": {
+      "__type": "ItemId:#Exchange",
+      "ChangeKey": "DwAAABYAAADnm6M7p7lhTKWqhaFqqNfIAAaiMwSG",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwBGAAAAAAD/Q6PH12PPS5Lu5k1vZ301BwDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAADnm6M7p7lhTKWqhaFqqNfIAAX7or9GAAA="
+    },
+    "ParentFolderId": {
+      "__type": "FolderId:#Exchange",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwAuAAAAAAD/Q6PH12PPS5Lu5k1vZ301AQDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAAA=",
+      "ChangeKey": "AQAAAA=="
+    },
+    "Start": "2024-01-15T00:00:00+09:00",
+    "End": "2024-01-17T00:00:00+09:00",
+    "Subject": "다·부·연합·융합전공 신청 및 포기",
+    "Sensitivity": "Normal",
+    "FreeBusyType": "Free",
+    "CalendarItemType": "Single",
+    "Location": {
+      "DisplayName": "",
+      "PostalAddress": {
+        "Street": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "PostalCode": null,
+        "PostOfficeBox": null,
+        "Type": "Home",
+        "LocationSource": "None"
+      },
+      "IdType": "Unknown",
+      "LocationType": "Unknown"
+    },
+    "Charm": "None"
+  },
+  {
+    "__type": "CalendarItem:#Exchange",
+    "ItemId": {
+      "__type": "ItemId:#Exchange",
+      "ChangeKey": "DwAAABYAAADnm6M7p7lhTKWqhaFqqNfIAAaiMwSF",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwBGAAAAAAD/Q6PH12PPS5Lu5k1vZ301BwDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAADnm6M7p7lhTKWqhaFqqNfIAAX7or9HAAA="
+    },
+    "ParentFolderId": {
+      "__type": "FolderId:#Exchange",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwAuAAAAAAD/Q6PH12PPS5Lu5k1vZ301AQDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAAA=",
+      "ChangeKey": "AQAAAA=="
+    },
+    "Start": "2024-01-15T00:00:00+09:00",
+    "End": "2024-01-17T00:00:00+09:00",
+    "Subject": "전과 신청",
+    "Sensitivity": "Normal",
+    "FreeBusyType": "Free",
+    "CalendarItemType": "Single",
+    "Location": {
+      "DisplayName": "",
+      "PostalAddress": {
+        "Street": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "PostalCode": null,
+        "PostOfficeBox": null,
+        "Type": "Home",
+        "LocationSource": "None"
+      },
+      "IdType": "Unknown",
+      "LocationType": "Unknown"
+    },
+    "Charm": "None"
+  },
+  {
+    "__type": "CalendarItem:#Exchange",
+    "ItemId": {
+      "__type": "ItemId:#Exchange",
+      "ChangeKey": "DwAAABYAAADnm6M7p7lhTKWqhaFqqNfIAAaiMwSH",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwBGAAAAAAD/Q6PH12PPS5Lu5k1vZ301BwDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAADnm6M7p7lhTKWqhaFqqNfIAAX7or9FAAA="
+    },
+    "ParentFolderId": {
+      "__type": "FolderId:#Exchange",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwAuAAAAAAD/Q6PH12PPS5Lu5k1vZ301AQDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAAA=",
+      "ChangeKey": "AQAAAA=="
+    },
+    "Start": "2024-01-15T00:00:00+09:00",
+    "End": "2024-01-16T00:00:00+09:00",
+    "Subject": "계절학기 성적 등재",
+    "Sensitivity": "Normal",
+    "FreeBusyType": "Free",
+    "CalendarItemType": "Single",
+    "Location": {
+      "DisplayName": "",
+      "PostalAddress": {
+        "Street": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "PostalCode": null,
+        "PostOfficeBox": null,
+        "Type": "Home",
+        "LocationSource": "None"
+      },
+      "IdType": "Unknown",
+      "LocationType": "Unknown"
+    },
+    "Charm": "None"
+  },
+  {
+    "__type": "CalendarItem:#Exchange",
+    "ItemId": {
+      "__type": "ItemId:#Exchange",
+      "ChangeKey": "DwAAABYAAADnm6M7p7lhTKWqhaFqqNfIAAaiMwSE",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwBGAAAAAAD/Q6PH12PPS5Lu5k1vZ301BwDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAADnm6M7p7lhTKWqhaFqqNfIAAX7or9IAAA="
+    },
+    "ParentFolderId": {
+      "__type": "FolderId:#Exchange",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwAuAAAAAAD/Q6PH12PPS5Lu5k1vZ301AQDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAAA=",
+      "ChangeKey": "AQAAAA=="
+    },
+    "Start": "2024-01-24T00:00:00+09:00",
+    "End": "2024-01-27T00:00:00+09:00",
+    "Subject": "재입학 접수",
+    "Sensitivity": "Normal",
+    "FreeBusyType": "Free",
+    "CalendarItemType": "Single",
+    "Location": {
+      "DisplayName": "",
+      "PostalAddress": {
+        "Street": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "PostalCode": null,
+        "PostOfficeBox": null,
+        "Type": "Home",
+        "LocationSource": "None"
+      },
+      "IdType": "Unknown",
+      "LocationType": "Unknown"
+    },
+    "Charm": "None"
+  },
+  {
+    "__type": "CalendarItem:#Exchange",
+    "ItemId": {
+      "__type": "ItemId:#Exchange",
+      "ChangeKey": "DwAAABYAAADnm6M7p7lhTKWqhaFqqNfIAAaiMwSB",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwBGAAAAAAD/Q6PH12PPS5Lu5k1vZ301BwDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAADnm6M7p7lhTKWqhaFqqNfIAAX8KL7JAAA="
+    },
+    "ParentFolderId": {
+      "__type": "FolderId:#Exchange",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwAuAAAAAAD/Q6PH12PPS5Lu5k1vZ301AQDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAAA=",
+      "ChangeKey": "AQAAAA=="
+    },
+    "Start": "2024-01-26T00:00:00+09:00",
+    "End": "2024-01-30T00:00:00+09:00",
+    "Subject": "졸업유예 접수",
+    "Sensitivity": "Normal",
+    "FreeBusyType": "Free",
+    "CalendarItemType": "Single",
+    "Location": {
+      "DisplayName": "",
+      "PostalAddress": {
+        "Street": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "PostalCode": null,
+        "PostOfficeBox": null,
+        "Type": "Home",
+        "LocationSource": "None"
+      },
+      "IdType": "Unknown",
+      "LocationType": "Unknown"
+    },
+    "Charm": "None"
+  },
+  {
+    "__type": "CalendarItem:#Exchange",
+    "ItemId": {
+      "__type": "ItemId:#Exchange",
+      "ChangeKey": "DwAAABYAAADnm6M7p7lhTKWqhaFqqNfIAAaiMwSA",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwBGAAAAAAD/Q6PH12PPS5Lu5k1vZ301BwDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAADnm6M7p7lhTKWqhaFqqNfIAAX8KL7KAAA="
+    },
+    "ParentFolderId": {
+      "__type": "FolderId:#Exchange",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwAuAAAAAAD/Q6PH12PPS5Lu5k1vZ301AQDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAAA=",
+      "ChangeKey": "AQAAAA=="
+    },
+    "Start": "2024-01-30T00:00:00+09:00",
+    "End": "2024-02-01T00:00:00+09:00",
+    "Subject": "졸업사정회(졸업우등생 선발)",
+    "Sensitivity": "Normal",
+    "FreeBusyType": "Free",
+    "CalendarItemType": "Single",
+    "Location": {
+      "DisplayName": "",
+      "PostalAddress": {
+        "Street": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "PostalCode": null,
+        "PostOfficeBox": null,
+        "Type": "Home",
+        "LocationSource": "None"
+      },
+      "IdType": "Unknown",
+      "LocationType": "Unknown"
+    },
+    "Charm": "None"
+  },
+  {
+    "__type": "CalendarItem:#Exchange",
+    "ItemId": {
+      "__type": "ItemId:#Exchange",
+      "ChangeKey": "DwAAABYAAADnm6M7p7lhTKWqhaFqqNfIAAaiMwR4",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwBGAAAAAAD/Q6PH12PPS5Lu5k1vZ301BwDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAADnm6M7p7lhTKWqhaFqqNfIAAZIlXaAAAA="
+    },
+    "ParentFolderId": {
+      "__type": "FolderId:#Exchange",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwAuAAAAAAD/Q6PH12PPS5Lu5k1vZ301AQDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAAA=",
+      "ChangeKey": "AQAAAA=="
+    },
+    "Start": "2024-01-31T00:00:00+09:00",
+    "End": "2024-02-01T00:00:00+09:00",
+    "Subject": "강의시간표 조회 개시",
+    "Sensitivity": "Normal",
+    "FreeBusyType": "Free",
+    "CalendarItemType": "Single",
+    "Location": {
+      "DisplayName": "",
+      "PostalAddress": {
+        "Street": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "PostalCode": null,
+        "PostOfficeBox": null,
+        "Type": "Home",
+        "LocationSource": "None"
+      },
+      "IdType": "Unknown",
+      "LocationType": "Unknown"
+    },
+    "Charm": "None"
+  },
+  {
+    "__type": "CalendarItem:#Exchange",
+    "ItemId": {
+      "__type": "ItemId:#Exchange",
+      "ChangeKey": "DwAAABYAAADnm6M7p7lhTKWqhaFqqNfIAAaiMwSD",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwBGAAAAAAD/Q6PH12PPS5Lu5k1vZ301BwDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAADnm6M7p7lhTKWqhaFqqNfIAAX7or9JAAA="
+    },
+    "ParentFolderId": {
+      "__type": "FolderId:#Exchange",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwAuAAAAAAD/Q6PH12PPS5Lu5k1vZ301AQDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAAA=",
+      "ChangeKey": "AQAAAA=="
+    },
+    "Start": "2024-02-01T00:00:00+09:00",
+    "End": "2024-02-02T00:00:00+09:00",
+    "Subject": "다·부·연계·융합전공 선발자 발표",
+    "Sensitivity": "Normal",
+    "FreeBusyType": "Free",
+    "CalendarItemType": "Single",
+    "Location": {
+      "DisplayName": "",
+      "PostalAddress": {
+        "Street": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "PostalCode": null,
+        "PostOfficeBox": null,
+        "Type": "Home",
+        "LocationSource": "None"
+      },
+      "IdType": "Unknown",
+      "LocationType": "Unknown"
+    },
+    "Charm": "None"
+  },
+  {
+    "__type": "CalendarItem:#Exchange",
+    "ItemId": {
+      "__type": "ItemId:#Exchange",
+      "ChangeKey": "DwAAABYAAADnm6M7p7lhTKWqhaFqqNfIAAaiMwSC",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwBGAAAAAAD/Q6PH12PPS5Lu5k1vZ301BwDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAADnm6M7p7lhTKWqhaFqqNfIAAX7or9KAAA="
+    },
+    "ParentFolderId": {
+      "__type": "FolderId:#Exchange",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwAuAAAAAAD/Q6PH12PPS5Lu5k1vZ301AQDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAAA=",
+      "ChangeKey": "AQAAAA=="
+    },
+    "Start": "2024-02-01T00:00:00+09:00",
+    "End": "2024-02-02T00:00:00+09:00",
+    "Subject": "전과 선발자 발표",
+    "Sensitivity": "Normal",
+    "FreeBusyType": "Free",
+    "CalendarItemType": "Single",
+    "Location": {
+      "DisplayName": "",
+      "PostalAddress": {
+        "Street": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "PostalCode": null,
+        "PostOfficeBox": null,
+        "Type": "Home",
+        "LocationSource": "None"
+      },
+      "IdType": "Unknown",
+      "LocationType": "Unknown"
+    },
+    "Charm": "None"
+  },
+  {
+    "__type": "CalendarItem:#Exchange",
+    "ItemId": {
+      "__type": "ItemId:#Exchange",
+      "ChangeKey": "DwAAABYAAADnm6M7p7lhTKWqhaFqqNfIAAaiMwR/",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwBGAAAAAAD/Q6PH12PPS5Lu5k1vZ301BwDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAADnm6M7p7lhTKWqhaFqqNfIAAX8KL7UAAA="
+    },
+    "ParentFolderId": {
+      "__type": "FolderId:#Exchange",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwAuAAAAAAD/Q6PH12PPS5Lu5k1vZ301AQDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAAA=",
+      "ChangeKey": "AQAAAA=="
+    },
+    "Start": "2024-02-01T09:30:00+09:00",
+    "End": "2024-02-02T17:00:00+09:00",
+    "Subject": "수강바구니(1차)",
+    "Sensitivity": "Normal",
+    "FreeBusyType": "Busy",
+    "CalendarItemType": "Single",
+    "Location": {
+      "DisplayName": "",
+      "PostalAddress": {
+        "Street": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "PostalCode": null,
+        "PostOfficeBox": null,
+        "Type": "Home",
+        "LocationSource": "None"
+      },
+      "IdType": "Unknown",
+      "LocationType": "Unknown"
+    },
+    "Charm": "None"
+  },
+  {
+    "__type": "CalendarItem:#Exchange",
+    "ItemId": {
+      "__type": "ItemId:#Exchange",
+      "ChangeKey": "DwAAABYAAADnm6M7p7lhTKWqhaFqqNfIAAaiMwR3",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwBGAAAAAAD/Q6PH12PPS5Lu5k1vZ301BwDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAADnm6M7p7lhTKWqhaFqqNfIAAZIlXaBAAA="
+    },
+    "ParentFolderId": {
+      "__type": "FolderId:#Exchange",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwAuAAAAAAD/Q6PH12PPS5Lu5k1vZ301AQDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAAA=",
+      "ChangeKey": "AQAAAA=="
+    },
+    "Start": "2024-02-05T00:00:00+09:00",
+    "End": "2024-02-06T00:00:00+09:00",
+    "Subject": "수강바구니 1차 자동신청결과확인(09:30~)",
+    "Sensitivity": "Normal",
+    "FreeBusyType": "Free",
+    "CalendarItemType": "Single",
+    "Location": {
+      "DisplayName": "",
+      "PostalAddress": {
+        "Street": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "PostalCode": null,
+        "PostOfficeBox": null,
+        "Type": "Home",
+        "LocationSource": "None"
+      },
+      "IdType": "Unknown",
+      "LocationType": "Unknown"
+    },
+    "Charm": "None"
+  },
+  {
+    "__type": "CalendarItem:#Exchange",
+    "ItemId": {
+      "__type": "ItemId:#Exchange",
+      "ChangeKey": "DwAAABYAAADnm6M7p7lhTKWqhaFqqNfIAAaiMwR9",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwBGAAAAAAD/Q6PH12PPS5Lu5k1vZ301BwDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAADnm6M7p7lhTKWqhaFqqNfIAAX8KL7MAAA="
+    },
+    "ParentFolderId": {
+      "__type": "FolderId:#Exchange",
+      "Id": "AAMkADBhNWUyMjI2LTNkZmYtNDM2MC05MTQyLWM3N2E1YWQ5Yjk0NwAuAAAAAAD/Q6PH12PPS5Lu5k1vZ301AQDnm6M7p7lhTKWqhaFqqNfIAALKEIAEAAA=",
+      "ChangeKey": "AQAAAA=="
+    },
+    "Start": "2024-02-05T00:00:00+09:00",
+    "End": "2024-02-08T00:00:00+09:00",
+    "Subject": "조기졸업 접수",
+    "Sensitivity": "Normal",
+    "FreeBusyType": "Free",
+    "CalendarItemType": "Single",
+    "Location": {
+      "DisplayName": "",
+      "PostalAddress": {
+        "Street": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "PostalCode": null,
+        "PostOfficeBox": null,
+        "Type": "Home",
+        "LocationSource": "None"
+      },
+      "IdType": "Unknown",
+      "LocationType": "Unknown"
+    },
+    "Charm": "None"
+  }
+]
