@@ -1,5 +1,6 @@
 package com.example.koncalendar
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -27,13 +28,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val navController = rememberNavController()
-            AppContent(auth, navController)
+            AppContent(auth, navController, this)
         }
     }
 }
 
 @Composable
-fun AppContent(auth: FirebaseAuth, navController: NavHostController) {
+fun AppContent(auth: FirebaseAuth, navController: NavHostController, context: Context) {
     var showSplashScreen by remember { mutableStateOf(true) }
 
     LaunchedEffect(showSplashScreen) {
@@ -59,7 +60,7 @@ fun AppContent(auth: FirebaseAuth, navController: NavHostController) {
                     }
                 }
                 composable("main") {
-                    MainScreen(auth.currentUser!!, navController, onSignOut = {
+                    MainScreen(auth.currentUser!!, navController, context, onSignOut = {
                         auth.signOut()
                         navController.navigate("auth") {
                             popUpTo("main") { inclusive = true }

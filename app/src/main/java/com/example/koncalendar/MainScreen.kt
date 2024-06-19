@@ -1,5 +1,6 @@
 package com.example.koncalendar
 
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -46,6 +47,7 @@ import androidx.navigation.NavHostController
 import com.example.koncalendar.models.CalendarCategory
 import com.example.koncalendar.models.Schedule
 import com.example.koncalendar.models.User
+import com.example.koncalendar.utils.ACalCategoryUtils
 import com.example.koncalendar.viewmodel.CategorySharingViewModel
 import com.example.koncalendar.viewmodel.CalendarViewModel
 import com.google.firebase.auth.FirebaseUser
@@ -72,6 +74,7 @@ import java.util.Locale
 fun MainScreen(
     user: FirebaseUser,
     navController: NavHostController,
+    context: Context,
     onSignOut: () -> Unit,
     calendarViewModel: CalendarViewModel = viewModel(),
     sharingViewModel: CategorySharingViewModel = viewModel()
@@ -83,6 +86,7 @@ fun MainScreen(
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     var selectedDate by remember { mutableStateOf(LocalDate.now()) }
+    val acManager = ACalCategoryUtils.AcManager(context)
 
     LaunchedEffect(user.uid) {
         val firestore = FirebaseFirestore.getInstance()
@@ -128,11 +132,12 @@ fun MainScreen(
                     Divider(modifier = Modifier.padding(vertical = 8.dp))
                     Button(onClick = {
                         scope.launch {
+                            acManager.createAndLoadSchedules(userId = user.uid)
                             calendarViewModel.fetchSchedules()
                             drawerState.close()
                         }
                     }) {
-                        Text("일정 내려받기")
+                        Text("학사일정 내려받기")
                     }
                     Divider(modifier = Modifier.padding(vertical = 8.dp))
                     Button(onClick = {
