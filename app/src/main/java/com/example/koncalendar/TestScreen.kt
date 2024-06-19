@@ -9,6 +9,7 @@ import androidx.compose.ui.graphics.Color
 import com.example.koncalendar.models.CalendarCategory
 import com.example.koncalendar.models.CategorySharing
 import com.example.koncalendar.models.Schedule
+import com.example.koncalendar.utils.ACalCategoryUtils
 import com.example.koncalendar.utils.CalendarCategoryUtils
 import com.example.koncalendar.utils.CategorySharingUtils
 import com.example.koncalendar.utils.ScheduleUtils
@@ -19,6 +20,7 @@ fun TestScreen(modifier: Modifier = Modifier) {
     var testCalendarCategory by remember { mutableStateOf<CalendarCategory?>(null) }
     var testCategorySharing by remember { mutableStateOf<CategorySharing?>(null) }
     var testSchedule by remember { mutableStateOf<Schedule?>(null) }
+    var testACalendarCategory by remember { mutableStateOf<CalendarCategory?>(null) }
     val coroutineScope = rememberCoroutineScope()
 
     val sampleCalendarCategory = CalendarCategory(
@@ -158,5 +160,21 @@ fun TestScreen(modifier: Modifier = Modifier) {
         Text(text = "Location: ${testSchedule?.location ?: "Loading..."}")
         Text(text = "Description: ${testSchedule?.description ?: "Loading..."}")
         Text(text = "Frequency: ${testSchedule?.frequency ?: "Loading..."}")
+
+        Button(onClick = {
+            coroutineScope.launch {
+                val docRef = ACalCategoryUtils.createOrUpdate_ACalCategory()
+                if (docRef != null) {
+                    testACalendarCategory = CalendarCategoryUtils.getCalendarCategoryByDocName(docRef.id)
+                }
+            }
+        }) {
+            Text("C&F Konkuk Academic Calendar Category")
+        }
+        Text(text = "Category ID: ${testACalendarCategory?.id ?: "Loading..."}")
+        Text(text = "User ID: ${testACalendarCategory?.userId ?: "Loading..."}")
+        Text(text = "Title: ${testACalendarCategory?.title ?: "Loading..."}")
+        Text(text = "Title: ${testACalendarCategory?.color ?: "Loading..."}")
+        Text(text = "Created At: ${testACalendarCategory?.createdAt ?: "Loading..."}")
     }
 }
