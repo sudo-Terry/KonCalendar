@@ -1,0 +1,14 @@
+{
+  "client_id" : "3b35b268-c391-42ad-a3c0-260de3da96f6",
+  "authorization_user_agent" : "WEBVIEW",
+  "redirect_uri" : "msauth://com.example.koncalendar/qhs5ObYu%2BoUk%2BYaa%2BMrF0WUplyQ%3D",
+  "account_mode" : "MULTIPLE",
+  "broker_redirect_uri_registered": true,
+  "authorities" : [
+    {
+      "type": "AAD",
+      "authority_url": "https://login.microsoftonline.com/common"
+    }
+  ]
+}
+

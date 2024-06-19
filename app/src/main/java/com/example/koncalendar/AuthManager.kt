@@ -27,11 +27,11 @@ import androidx.compose.ui.Modifier
 
 class AuthManager(private val activity: Activity) {
 
-    private val CLIENT_ID = "YOUR_CLIENT_ID"  // 여기서 YOUR_CLIENT_ID를 실제 클라이언트 ID로 변경
+    private val CLIENT_ID = "3b35b268-c391-42ad-a3c0-260de3da96f6"  // 여기서 YOUR_CLIENT_ID를 실제 클라이언트 ID로 변경
     private val SCOPES = arrayOf("User.Read", "Calendars.Read")
 
-    public var msalApp = PublicClientApplication.createMultipleAccountPublicClientApplication(activity.applicationContext,
-        1);    //R.raw.auth_config_multiple_account 실행 불가
+    private var msalApp = PublicClientApplication.createMultipleAccountPublicClientApplication(activity.applicationContext,
+        R.raw.auth_config_multiple_account);    //R.raw.auth_config_multiple_account
 
     var accessToken = mutableStateOf("")
 
