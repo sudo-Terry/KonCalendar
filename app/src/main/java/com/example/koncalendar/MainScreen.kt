@@ -425,7 +425,7 @@ fun DayContentForMonth(
                     Color(
                         android.graphics.Color.parseColor(it)
                     )
-                } ?: Color.Gray
+                } ?: colorResource(id = R.color.example_6_month_bg_color3)
                 Box(
                     modifier = Modifier
                         .size(16.dp)
@@ -495,7 +495,7 @@ fun DayContentForWeek(
 
 @Composable
 fun ScheduleItem(schedule: Schedule, colorHex: String?, viewModel: CalendarViewModel) {
-    val color = colorHex?.let { Color(android.graphics.Color.parseColor(it)) } ?: Color.Gray
+    val color = colorHex?.let { Color(android.graphics.Color.parseColor(it)) } ?: colorResource(id = R.color.example_6_month_bg_color3)
     Card(
         modifier = Modifier
             .fillMaxWidth()
