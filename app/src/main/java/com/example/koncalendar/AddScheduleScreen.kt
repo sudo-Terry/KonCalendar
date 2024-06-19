@@ -136,12 +136,9 @@ fun AddScheduleScreen(
                         location = location,
                         userId = userId
                     )
-                    val createSchedule = ScheduleUtils.createSchedule(schedule)
-                    createSchedule?.let {
-                        calendarViewModel.addSchedule(it)
-                        navController.popBackStack()
-                    }
+                    calendarViewModel.addSchedule(schedule)
                     isButtonClicked = false
+                    navController.popBackStack()
                 }
                 }
             },

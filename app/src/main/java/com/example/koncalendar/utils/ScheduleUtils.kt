@@ -17,7 +17,9 @@ object ScheduleUtils {
                 .add(schedule)
                 .await()
 
-            schedule.copy(id = documentRef.id)
+            val dummy = schedule.copy(id = documentRef.id)
+            updateSchedule(documentRef.id, dummy)
+            dummy
         } catch (e: FirebaseFirestoreException) {
             Log.e(TAG, "Error creating schedule", e)
             null
