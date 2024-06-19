@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
@@ -32,7 +33,10 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -356,8 +360,11 @@ fun DayContentForMonth(
     categories: List<CalendarCategory>,
     onDayClick: (LocalDate) -> Unit
 ) {
-    val isCurrentMonth = day.position == DayPosition.MonthDate
-    val textColor = if (isCurrentMonth) Color.Black else Color.Gray
+    val textColor = when (day.position) {
+        //DayPosition.MonthDate -> if (isSelected) colorResource(R.color.example_6_month_bg_color) else Color.Unspecified
+        DayPosition.MonthDate -> colorResource(R.color.example_6_black)
+        DayPosition.InDate, DayPosition.OutDate -> colorResource(R.color.white)
+    }
 
     val relevantSchedules = schedules.filter {
         LocalDate.parse(it.startDate) <= day.date && LocalDate.parse(it.endDate) >= day.date
@@ -367,8 +374,13 @@ fun DayContentForMonth(
         modifier = Modifier
             .aspectRatio(1f)
             .padding(4.dp)
-            .background(Color.LightGray, MaterialTheme.shapes.medium)
-            .clickable { onDayClick(day.date) }
+            .clip(CircleShape)
+            .background(color = colorResource(R.color.example_6_month_bg_color))
+            .clickable(
+                enabled = day.position == DayPosition.MonthDate,
+                onClick = { onDayClick(day.date) },
+            ),
+        contentAlignment = Alignment.Center,
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -474,3 +486,4 @@ fun ScheduleItem(schedule: Schedule, colorHex: String?, viewModel: CalendarViewM
         }
     }
 }
+
