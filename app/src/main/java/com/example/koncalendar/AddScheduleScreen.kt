@@ -117,12 +117,11 @@ fun AddScheduleScreen(
                 .fillMaxWidth()
                 .padding(8.dp)
         )
-        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(8.dp)) {
-            Text("Start Date: $startDate")
-            Spacer(modifier = Modifier.width(8.dp))
-            Button(onClick = { showStartDatePicker = true }) {
-                Text("시작일 설정")
-            }
+        Button(onClick = { showStartDatePicker = true }) {
+            Text("시작일 설정")
+        }
+        if (startDate.isNotBlank()){
+            Text("시작일: $startDate")
         }
         if (startDate.isBlank()) {
             Text(
@@ -131,12 +130,11 @@ fun AddScheduleScreen(
                 style = TextStyle(fontSize = 12.sp)
             )
         }
-        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(8.dp)) {
-            Text("End Date: $endDate")
-            Spacer(modifier = Modifier.width(8.dp))
-            Button(onClick = { showEndDatePicker = true }) {
-                Text("종료일 설정")
-            }
+        Button(onClick = { showEndDatePicker = true }) {
+            Text("종료일 설정")
+        }
+        if (endDate.isNotBlank()){
+            Text("종료일: $endDate")
         }
         if (endDate.isBlank()) {
             Text(
@@ -145,12 +143,11 @@ fun AddScheduleScreen(
                 style = TextStyle(fontSize = 12.sp)
             )
         }
-        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(8.dp)) {
-            Text("Start Time: $startTime")
-            Spacer(modifier = Modifier.width(8.dp))
-            Button(onClick = { showStartTimePicker = true }) {
-                Text("시작 시간 설정")
-            }
+        Button(onClick = { showStartTimePicker = true }) {
+            Text("시작 시간 설정")
+        }
+        if (startTime.isNotBlank()){
+            Text("시작 시간: $startTime")
         }
         if (startTime.isBlank()) {
             Text(
@@ -159,12 +156,11 @@ fun AddScheduleScreen(
                 style = TextStyle(fontSize = 12.sp)
             )
         }
-        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(8.dp)) {
-            Text("End Time: $endTime")
-            Spacer(modifier = Modifier.width(8.dp))
-            Button(onClick = { showEndTimePicker = true }) {
-                Text("종료 시간 설정")
-            }
+        Button(onClick = { showEndTimePicker = true }) {
+            Text("종료 시간 설정")
+        }
+        if (endTime.isNotBlank()){
+            Text("종료 시간: $startTime")
         }
         if (endTime.isBlank()) {
             Text(
