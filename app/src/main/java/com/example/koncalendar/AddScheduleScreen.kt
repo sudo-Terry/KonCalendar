@@ -78,6 +78,10 @@ fun AddScheduleScreen(
     val coroutineScope = rememberCoroutineScope()
     val context = LocalContext.current
 
+    val isFormValid by derivedStateOf {
+        title.isNotBlank() && startDate.isNotBlank() && endDate.isNotBlank() && startTime.isNotBlank() && endTime.isNotBlank()
+    }
+
     Column(modifier = Modifier.padding(16.dp)) {
         Button(onClick = { navController.popBackStack() },
             shape = RoundedCornerShape(16.dp),
@@ -92,11 +96,19 @@ fun AddScheduleScreen(
         TextField(
             value = title,
             onValueChange = { title = it },
-            label = { Text("일정 제목") },
+            label = { Text("일정 제목 *") },
+            isError = title.isBlank(),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
         )
+        if (title.isBlank()) {
+            Text(
+                text = "일정 제목은 필수 항목입니다.",
+                color = Color.Red,
+                style = TextStyle(fontSize = 12.sp)
+            )
+        }
         TextField(
             value = description,
             onValueChange = { description = it },
@@ -112,12 +124,26 @@ fun AddScheduleScreen(
                 Text("시작일 설정")
             }
         }
+        if (startDate.isBlank()) {
+            Text(
+                text = "시작일은 필수 항목입니다.",
+                color = Color.Red,
+                style = TextStyle(fontSize = 12.sp)
+            )
+        }
         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(8.dp)) {
             Text("End Date: $endDate")
             Spacer(modifier = Modifier.width(8.dp))
             Button(onClick = { showEndDatePicker = true }) {
                 Text("종료일 설정")
             }
+        }
+        if (endDate.isBlank()) {
+            Text(
+                text = "종료일은 필수 항목입니다.",
+                color = Color.Red,
+                style = TextStyle(fontSize = 12.sp)
+            )
         }
         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(8.dp)) {
             Text("Start Time: $startTime")
@@ -126,12 +152,26 @@ fun AddScheduleScreen(
                 Text("시작 시간 설정")
             }
         }
+        if (startTime.isBlank()) {
+            Text(
+                text = "시작 시간은 필수 항목입니다.",
+                color = Color.Red,
+                style = TextStyle(fontSize = 12.sp)
+            )
+        }
         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(8.dp)) {
             Text("End Time: $endTime")
             Spacer(modifier = Modifier.width(8.dp))
             Button(onClick = { showEndTimePicker = true }) {
                 Text("종료 시간 설정")
             }
+        }
+        if (endTime.isBlank()) {
+            Text(
+                text = "종료 시간은 필수 항목입니다.",
+                color = Color.Red,
+                style = TextStyle(fontSize = 12.sp)
+            )
         }
         TextField(
             value = location,
@@ -143,27 +183,28 @@ fun AddScheduleScreen(
         )
         Button(
             onClick = {
-                if (!isButtonClicked) {
+                if (!isButtonClicked && isFormValid) {
                     isButtonClicked = true
-                coroutineScope.launch {
-                    val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return@launch
+                    coroutineScope.launch {
+                        val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return@launch
 
-                    val schedule = Schedule(
-                        title = title,
-                        description = description,
-                        startDate = startDate,
-                        endDate = endDate,
-                        startTime = startTime,
-                        endTime = endTime,
-                        location = location,
-                        userId = userId
-                    )
-                    calendarViewModel.addSchedule(schedule)
-                    isButtonClicked = false
-                    navController.popBackStack()
-                }
+                        val schedule = Schedule(
+                            title = title,
+                            description = description,
+                            startDate = startDate,
+                            endDate = endDate,
+                            startTime = startTime,
+                            endTime = endTime,
+                            location = location,
+                            userId = userId
+                        )
+                        calendarViewModel.addSchedule(schedule)
+                        isButtonClicked = false
+                        navController.popBackStack()
+                    }
                 }
             },
+            enabled = isFormValid,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
