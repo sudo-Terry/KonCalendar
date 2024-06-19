@@ -27,11 +27,11 @@ object ACalCategoryUtils {
 
         fun createAndLoadSchedules(userId: String) {
             CoroutineScope(Dispatchers.IO).launch {
-                val category: CalendarCategory? = ACalCategoryUtils.createOrUpdate_ACalCategory(userId)
+                val category: CalendarCategory? = createOrUpdate_ACalCategory(userId)
                 if (category != null) {
-                    val schedules: List<Schedule>? = ACalCategoryUtils.loadSchedulesFromAsset(context, userId)
+                    val schedules: List<Schedule>? = loadSchedulesFromAsset(context, userId)
                     schedules?.let {
-                        ACalCategoryUtils.saveSchedulesToFirestore(it)
+                        saveSchedulesToFirestore(it)
                     }
                 }
             }

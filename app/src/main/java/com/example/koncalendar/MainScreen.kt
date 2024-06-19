@@ -107,6 +107,10 @@ fun MainScreen(
             .addOnFailureListener { /* Handle failure */ }
     }
 
+    LaunchedEffect(Unit) {
+        calendarViewModel.fetchSchedules()
+    }
+
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
@@ -118,21 +122,21 @@ fun MainScreen(
                 ) {
                     Text("캘린더 레이아웃 선택", modifier = Modifier.padding(16.dp))
                     Button(onClick = {
-                            calendarViewModel.setView("Daily")
-                            scope.launch {
-                                drawerState.close()
-                            }
-                        },
+                        calendarViewModel.setView("Daily")
+                        scope.launch {
+                            drawerState.close()
+                        }
+                    },
                         modifier = Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(12.dp),
                         colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.example_6_month_bg_color))
                     ) { Text("Daily View", color = Color.Black) }
                     Button(onClick = {
-                            calendarViewModel.setView("Monthly")
-                            scope.launch {
-                                drawerState.close()
-                            }
-                        },
+                        calendarViewModel.setView("Monthly")
+                        scope.launch {
+                            drawerState.close()
+                        }
+                    },
                         modifier = Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(12.dp),
                         colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.example_6_month_bg_color))
@@ -145,15 +149,12 @@ fun MainScreen(
                     Divider(modifier = Modifier.padding(vertical = 8.dp))
 
                     Button(onClick = {
-                            if (!isButtonClicked) {
-                                isButtonClicked = true
-                                scope.launch {
-                                    acManager.createAndLoadSchedules(userId = user.uid)
-                                    calendarViewModel.fetchSchedules()
-                                    drawerState.close()
-                                }
-                            }
-                        },
+                        scope.launch {
+                            acManager.createAndLoadSchedules(userId = user.uid)
+                            calendarViewModel.fetchSchedules()
+                            drawerState.close()
+                        }
+                    },
                         modifier = Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(12.dp),
                         colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.example_6_month_bg_color))
@@ -210,34 +211,11 @@ fun MainScreen(
     )
 }
 
+
 @Composable
 fun CategoryButton(category: CalendarCategory, viewModel: CalendarViewModel) {
     Button(onClick = { viewModel.setCategory(category.id) }) {
         Text(category.title)
-    }
-}
-
-@Composable
-fun CalendarTabs(
-    categories: List<CalendarCategory>,
-    schedules: List<Schedule>,
-    selectedDate: LocalDate,
-    onDateChange: (LocalDate) -> Unit,
-    viewModel: CalendarViewModel
-) {
-    var selectedTab by remember { mutableStateOf(0) }
-
-    Column {
-        TabRow(selectedTabIndex = selectedTab) {
-            Tab(selected = selectedTab == 0, onClick = { selectedTab = 0 }) { Text("일간") }
-            Tab(selected = selectedTab == 1, onClick = { selectedTab = 1 }) { Text("주간") }
-            Tab(selected = selectedTab == 2, onClick = { selectedTab = 2 }) { Text("월간") }
-        }
-        when (selectedTab) {
-            0 -> DayCalendarScreen(categories, schedules, selectedDate, onDateChange, viewModel)
-            1 -> WeekCalendarScreen(categories, schedules, selectedDate, onDateChange, viewModel)
-            2 -> MonthCalendarScreen(categories, schedules, selectedDate, onDateChange, viewModel)
-        }
     }
 }
 
