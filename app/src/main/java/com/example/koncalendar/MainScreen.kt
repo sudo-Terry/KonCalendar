@@ -1,19 +1,21 @@
 package com.example.koncalendar
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FabPosition
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -21,19 +23,22 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.example.koncalendar.models.CalendarCategory
 import com.example.koncalendar.models.Schedule
 import com.example.koncalendar.models.User
@@ -41,10 +46,20 @@ import com.example.koncalendar.viewmodel.CategorySharingViewModel
 import com.example.koncalendar.viewmodel.CalendarViewModel
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
+import com.kizitonwose.calendar.compose.HorizontalCalendar
+import com.kizitonwose.calendar.compose.WeekCalendar
+import com.kizitonwose.calendar.compose.rememberCalendarState
+import com.kizitonwose.calendar.compose.weekcalendar.rememberWeekCalendarState
+import com.kizitonwose.calendar.core.CalendarDay
+import com.kizitonwose.calendar.core.CalendarMonth
+import com.kizitonwose.calendar.core.DayPosition
+import com.kizitonwose.calendar.core.WeekDay
+import com.kizitonwose.calendar.core.WeekDayPosition
 import kotlinx.coroutines.launch
+import java.time.DayOfWeek
 import java.time.LocalDate
+import java.time.YearMonth
 import java.time.format.DateTimeFormatter
-import java.time.temporal.WeekFields
 import java.util.Locale
 
 
@@ -63,6 +78,7 @@ fun MainScreen(
     val categories by calendarViewModel.categories.observeAsState(emptyList())
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
+    var selectedDate by remember { mutableStateOf(LocalDate.now()) }
 
     LaunchedEffect(user.uid) {
         val firestore = FirebaseFirestore.getInstance()
@@ -78,59 +94,15 @@ fun MainScreen(
             .addOnFailureListener { /* Handle failure */ }
     }
 
-    // 기본 테스트 카테고리 생성
-    if (categories.isEmpty()) {
-        calendarViewModel.setCategories(
-            listOf(
-                CalendarCategory(id = "1", userId = user.uid, title = "Test Category 1"),
-                CalendarCategory(id = "2", userId = user.uid, title = "Test Category 2")
-            )
-        )
-    }
-
-    // 기본 테스트 일정 생성
-    if (schedules.isEmpty()) {
-        calendarViewModel.setSchedules(
-            listOf(
-                Schedule(
-                    id = "1",
-                    startTime = "2024-05-15T09:00:00",
-                    endTime = "2024-05-15T10:00:00",
-                    startDate = "2024-05-15",
-                    endDate = "2024-05-15",
-                    title = "Test Schedule 1",
-                    categoryId = "1",
-                    userId = user.uid,
-                    location = "Location 1",
-                    description = "Description 1",
-                    frequency = "daily"
-                ),
-                Schedule(
-                    id = "2",
-                    startTime = "2024-05-16T11:00:00",
-                    endTime = "2024-05-16T12:00:00",
-                    startDate = "2024-05-16",
-                    endDate = "2024-05-16",
-                    title = "Test Schedule 2",
-                    categoryId = "2",
-                    userId = user.uid,
-                    location = "Location 2",
-                    description = "Description 2",
-                    frequency = "weekly"
-                )
-            )
-        )
-    }
-
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
             ModalDrawerSheet {
                 Column {
-                    Text("일간, 주간, 월간", modifier = Modifier.padding(16.dp))
-                    Button(onClick = { calendarViewModel.setView("Daily") }) { Text("일") }
-                    Button(onClick = { calendarViewModel.setView("Weekly") }) { Text("주") }
-                    Button(onClick = { calendarViewModel.setView("Monthly") }) { Text("월") }
+//                    Text("일간, 주간, 월간", modifier = Modifier.padding(16.dp))
+//                    Button(onClick = { calendarViewModel.setView("Daily") }) { Text("일") }
+//                    Button(onClick = { calendarViewModel.setView("Weekly") }) { Text("주") }
+//                    Button(onClick = { calendarViewModel.setView("Monthly") }) { Text("월") }
                     Divider(modifier = Modifier.padding(vertical = 8.dp))
                     Text("일정", modifier = Modifier.padding(16.dp))
                     categories.forEach { category ->
@@ -145,9 +117,10 @@ fun MainScreen(
                     }) {
                         Text("일정 내려받기")
                     }
+                    Divider(modifier = Modifier.padding(vertical = 8.dp))
                     Button(onClick = {
+                        navController.navigate("categorySharing")
                         scope.launch {
-                            navController.navigate("categorySharing")
                             drawerState.close()
                         }
                     }) {
@@ -160,7 +133,7 @@ fun MainScreen(
             Scaffold(
                 topBar = {
                     TopAppBar(
-                        title = { Text("Calendar") },
+                        title = { Text("캘린더") },
                         navigationIcon = {
                             IconButton(onClick = { scope.launch { drawerState.open() } }) {
                                 Icon(Icons.Default.Menu, contentDescription = "Menu")
@@ -169,43 +142,14 @@ fun MainScreen(
                     )
                 },
                 floatingActionButton = {
-                    FloatingActionButton(onClick = {
-                        navController.navigate("addSchedule")
-                    }) {
+                    FloatingActionButton(onClick = { navController.navigate("addSchedule") }) {
                         Icon(Icons.Default.Add, contentDescription = "Add Schedule")
                     }
                 },
-                floatingActionButtonPosition = FabPosition.End,
-                content = { padding ->
-                    Box(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(padding)
-                    ) {
-                        Column(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .padding(16.dp)
-                                .align(Alignment.Center)
-                        ) {
-                            userProfile.value?.let {
-                                Text("Welcome, ${it.firstName} ${it.lastName}!")
-                            }
-                            Spacer(modifier = Modifier.height(16.dp))
-                            Button(
-                                onClick = { onSignOut() },
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(50.dp)
-                            ) {
-                                Text("Sign Out")
-                            }
-                            when (selectedView) {
-                                "Daily" -> DailyView(schedules)
-                                "Weekly" -> WeeklyView(schedules)
-                                "Monthly" -> MonthlyView(schedules)
-                            }
-                        }
+                content = { paddingValues ->
+                    Column(Modifier.padding(paddingValues)) {
+                        CalendarTabs(categories, schedules, selectedDate, onDateChange = { selectedDate = it }, viewModel = calendarViewModel
+                        )
                     }
                 }
             )
@@ -221,52 +165,310 @@ fun CategoryButton(category: CalendarCategory, viewModel: CalendarViewModel) {
 }
 
 @Composable
-fun DailyView(schedules: List<Schedule>) {
-    val groupedSchedules = schedules.groupBy { it.startDate }
-    LazyColumn {
-        groupedSchedules.forEach { (date, schedules) ->
-            item {
-                Text(text = "Date: $date")
+fun CalendarTabs(
+    categories: List<CalendarCategory>,
+    schedules: List<Schedule>,
+    selectedDate: LocalDate,
+    onDateChange: (LocalDate) -> Unit,
+    viewModel: CalendarViewModel
+) {
+    var selectedTab by remember { mutableStateOf(0) }
+
+    Column {
+        TabRow(selectedTabIndex = selectedTab) {
+            Tab(selected = selectedTab == 0, onClick = { selectedTab = 0 }) { Text("일간") }
+            Tab(selected = selectedTab == 1, onClick = { selectedTab = 1 }) { Text("주간") }
+            Tab(selected = selectedTab == 2, onClick = { selectedTab = 2 }) { Text("월간") }
+        }
+        when (selectedTab) {
+            0 -> DayCalendarScreen(categories, schedules, selectedDate, onDateChange, viewModel)
+            1 -> WeekCalendarScreen(categories, schedules, selectedDate, onDateChange, viewModel)
+            2 -> MonthCalendarScreen(categories, schedules, selectedDate, onDateChange, viewModel)
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun DayCalendarScreen(
+    categories: List<CalendarCategory>,
+    schedules: List<Schedule>,
+    selectedDate: LocalDate,
+    onDateChange: (LocalDate) -> Unit,
+    viewModel: CalendarViewModel
+) {
+    Column {
+        TopAppBar(
+            title = { Text(selectedDate.toString()) },
+            actions = {
+                IconButton(onClick = { onDateChange(selectedDate.minusDays(1)) }) {
+                    Icon(Icons.Default.ArrowBack, contentDescription = "Previous Day")
+                }
+                IconButton(onClick = { onDateChange(selectedDate.plusDays(1)) }) {
+                    Icon(Icons.Default.ArrowForward, contentDescription = "Next Day")
+                }
             }
-            items(schedules) { schedule ->
-                Text(text = "${schedule.title}: ${schedule.description}")
+        )
+        LazyColumn {
+            items(schedules.filter { it.startDate == selectedDate.toString() }) { schedule ->
+                ScheduleItem(
+                    schedule,
+                    categories.find { it.id == schedule.categoryId }?.color,
+                    viewModel
+                )
             }
         }
     }
 }
 
 @Composable
-fun WeeklyView(schedules: List<Schedule>) {
-    val groupedSchedules = schedules.groupBy { getWeekOfYear(it.startDate) }
-    LazyColumn {
-        groupedSchedules.forEach { (week, schedules) ->
-            item {
-                Text(text = "Week: $week")
+fun WeekCalendarScreen(
+    categories: List<CalendarCategory>,
+    schedules: List<Schedule>,
+    selectedDate: LocalDate,
+    onDateChange: (LocalDate) -> Unit,
+    viewModel: CalendarViewModel
+) {
+    val state = rememberWeekCalendarState(
+        startDate = selectedDate.with(DayOfWeek.MONDAY),
+        endDate = selectedDate.with(DayOfWeek.SUNDAY),
+        firstVisibleWeekDate = selectedDate,
+        firstDayOfWeek = DayOfWeek.SUNDAY
+    )
+
+    var selectedDay by remember { mutableStateOf(selectedDate) }
+
+    Column {
+        Text(
+            text = "${state.startDate.month} ${state.startDate.year}",
+            style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 20.sp),
+            modifier = Modifier.padding(8.dp)
+        )
+        WeekCalendar(
+            state = state,
+            dayContent = { day ->
+                DayContentForWeek(day, schedules, categories, onDayClick = {
+                    selectedDay = it
+                    onDateChange(it)
+                })
             }
-            items(schedules) { schedule ->
-                Text(text = "${schedule.title}: ${schedule.description}")
+        )
+        LazyColumn {
+            items(schedules.filter {
+                LocalDate.parse(it.startDate) <= selectedDay && LocalDate.parse(
+                    it.endDate
+                ) >= selectedDay
+            }) { schedule ->
+                ScheduleItem(
+                    schedule,
+                    categories.find { it.id == schedule.categoryId }?.color,
+                    viewModel
+                )
             }
         }
     }
 }
 
-fun getWeekOfYear(dateString: String): Int {
-    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-    val date = LocalDate.parse(dateString, formatter)
-    val weekFields = WeekFields.of(Locale.getDefault())
-    return date.get(weekFields.weekOfWeekBasedYear())
+@Composable
+fun MonthCalendarScreen(
+    categories: List<CalendarCategory>,
+    schedules: List<Schedule>,
+    selectedDate: LocalDate,
+    onDateChange: (LocalDate) -> Unit,
+    viewModel: CalendarViewModel
+) {
+    val currentMonth = remember { YearMonth.now() }
+    val startMonth = remember { currentMonth.minusMonths(100) }
+    val endMonth = remember { currentMonth.plusMonths(100) }
+
+    val state = rememberCalendarState(
+        startMonth = startMonth,
+        endMonth = endMonth,
+        firstVisibleMonth = currentMonth,
+        firstDayOfWeek = DayOfWeek.SUNDAY
+    )
+
+    var selectedDay by remember { mutableStateOf(LocalDate.now()) }
+
+    Column {
+        Text(
+            text = "${
+                state.firstVisibleMonth.yearMonth.format(
+                    DateTimeFormatter.ofPattern(
+                        "MMMM yyyy",
+                        Locale.getDefault()
+                    )
+                )
+            }",
+            style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 20.sp),
+            modifier = Modifier.padding(8.dp)
+        )
+        HorizontalCalendar(
+            state = state,
+            dayContent = { day ->
+                DayContentForMonth(day, schedules, categories, onDayClick = {
+                    selectedDay = it
+                    onDateChange(it)
+                })
+            },
+            monthHeader = { month ->
+                MonthHeader(month)
+            }
+        )
+        LazyColumn {
+            items(schedules.filter {
+                LocalDate.parse(it.startDate) <= selectedDay && LocalDate.parse(
+                    it.endDate
+                ) >= selectedDay
+            }) { schedule ->
+                ScheduleItem(
+                    schedule,
+                    categories.find { it.id == schedule.categoryId }?.color,
+                    viewModel
+                )
+            }
+        }
+    }
 }
 
 @Composable
-fun MonthlyView(schedules: List<Schedule>) {
-    val groupedSchedules = schedules.groupBy { it.startDate.substring(0, 7) }
-    LazyColumn {
-        groupedSchedules.forEach { (month, schedules) ->
-            item {
-                Text(text = "Month: $month")
+fun MonthHeader(month: CalendarMonth) {
+    Row(modifier = Modifier.fillMaxWidth()) {
+        month.weekDays.first().forEach { weekDay ->
+            val dayOfWeek = weekDay.date.dayOfWeek
+            Text(
+                modifier = Modifier.weight(1f),
+                textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                text = dayOfWeek.getDisplayName(
+                    java.time.format.TextStyle.SHORT,
+                    java.util.Locale.getDefault()
+                )
+            )
+        }
+    }
+}
+
+@Composable
+fun DayContentForMonth(
+    day: CalendarDay,
+    schedules: List<Schedule>,
+    categories: List<CalendarCategory>,
+    onDayClick: (LocalDate) -> Unit
+) {
+    val isCurrentMonth = day.position == DayPosition.MonthDate
+    val textColor = if (isCurrentMonth) Color.Black else Color.Gray
+
+    val relevantSchedules = schedules.filter {
+        LocalDate.parse(it.startDate) <= day.date && LocalDate.parse(it.endDate) >= day.date
+    }
+
+    Box(
+        modifier = Modifier
+            .aspectRatio(1f)
+            .padding(4.dp)
+            .background(Color.LightGray, MaterialTheme.shapes.medium)
+            .clickable { onDayClick(day.date) }
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(
+                text = day.date.dayOfMonth.toString(),
+                style = TextStyle(fontWeight = FontWeight.Bold, color = textColor)
+            )
+            relevantSchedules.take(3).forEach { schedule ->
+                val color = categories.find { it.id == schedule.categoryId }?.color?.let {
+                    Color(
+                        android.graphics.Color.parseColor(it)
+                    )
+                } ?: Color.Gray
+                Box(
+                    modifier = Modifier
+                        .size(16.dp)
+                        .background(color, MaterialTheme.shapes.small)
+                )
             }
-            items(schedules) { schedule ->
-                Text(text = "${schedule.title}: ${schedule.description}")
+            if (relevantSchedules.size > 3) {
+                Text(
+                    "+${relevantSchedules.size - 3} more",
+                    style = TextStyle(fontSize = 12.sp, color = Color.Gray)
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun DayContentForWeek(
+    day: WeekDay,
+    schedules: List<Schedule>,
+    categories: List<CalendarCategory>,
+    onDayClick: (LocalDate) -> Unit
+) {
+    val isCurrentMonth = day.position == WeekDayPosition.RangeDate
+    val textColor = if (isCurrentMonth) Color.Black else Color.Gray
+
+    val relevantSchedules = schedules.filter {
+        LocalDate.parse(it.startDate) <= day.date && LocalDate.parse(it.endDate) >= day.date
+    }
+
+    Box(
+        modifier = Modifier
+            .aspectRatio(1f)
+            .padding(4.dp)
+            .background(Color.LightGray, MaterialTheme.shapes.medium)
+            .clickable { onDayClick(day.date) }
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(
+                text = day.date.dayOfMonth.toString(),
+                style = TextStyle(fontWeight = FontWeight.Bold, color = textColor)
+            )
+            relevantSchedules.take(3).forEach { schedule ->
+                val color = categories.find { it.id == schedule.categoryId }?.color?.let {
+                    Color(
+                        android.graphics.Color.parseColor(it)
+                    )
+                } ?: Color.Gray
+                Box(
+                    modifier = Modifier
+                        .size(16.dp)
+                        .background(color, MaterialTheme.shapes.small)
+                )
+            }
+            if (relevantSchedules.size > 3) {
+                Text(
+                    "+${relevantSchedules.size - 3} more",
+                    style = TextStyle(fontSize = 12.sp, color = Color.Gray)
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun ScheduleItem(schedule: Schedule, colorHex: String?, viewModel: CalendarViewModel) {
+    val color = colorHex?.let { Color(android.graphics.Color.parseColor(it)) } ?: Color.Gray
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp),
+        colors = CardDefaults.cardColors(containerColor = color)
+    ) {
+        Column(modifier = Modifier.padding(8.dp)) {
+            Text(schedule.title, style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 18.sp))
+            Text("${schedule.startTime} - ${schedule.endTime}")
+            if (schedule.location != null) Text("위치: ${schedule.location}")
+            if (schedule.description != null) Text("설명: ${schedule.description}")
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Button(onClick = { viewModel.deleteSchedule(schedule.id) }) {
+                Text("Delete Schedule")
             }
         }
     }

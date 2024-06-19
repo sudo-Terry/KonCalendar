@@ -69,12 +69,11 @@ class CalendarViewModel : ViewModel() {
         }
     }
 
-    // 테스트 카테고리와 일정 설정 메서드
-    fun setCategories(testCategories: List<CalendarCategory>) {
-        _categories.value = testCategories
-    }
-
-    fun setSchedules(testSchedules: List<Schedule>) {
-        _schedules.value = testSchedules
+    fun deleteSchedule(scheduleId: String){
+        viewModelScope.launch {
+            if(ScheduleUtils.deleteSchedule(scheduleId)){
+                _schedules.value = _schedules.value?.filterNot {it.id == scheduleId}
+            }
+        }
     }
 }
