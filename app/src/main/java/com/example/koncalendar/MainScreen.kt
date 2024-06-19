@@ -155,11 +155,11 @@ fun MainScreen(
                     }
                 }
                 Column {
-                    Button(
-                        onClick = { onSignOut() },
-                    ) {
-                        Text("로그아웃")
-                    }
+//                    Button(
+//                        onClick = { onSignOut() },
+//                    ) {
+//                        Text("로그아웃")
+//                    }
                 }
             }
         },
