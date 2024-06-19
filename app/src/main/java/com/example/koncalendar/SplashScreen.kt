@@ -6,12 +6,15 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -29,7 +32,7 @@ fun SplashScreen(navigateToAuthOrMainScreen: () -> Unit) {
     var rotationState by remember { mutableFloatStateOf(0f) }
 
     LaunchedEffect(true) {
-        delay(2000)
+        delay(1000)
         navigateToAuthOrMainScreen()
     }
 
@@ -51,14 +54,10 @@ fun SplashScreen(navigateToAuthOrMainScreen: () -> Unit) {
             .background(Color.White),
         contentAlignment = Alignment.Center
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.baseline_sync_24),
-            contentDescription = null,
+        CircularProgressIndicator(
             modifier = Modifier
-                .size(150.dp)
-                .clip(CircleShape)
-                .scale(scale)
-                .rotate(rotationState)
+                .padding(top = 10.dp),
+            color = Color.Gray
         )
     }
 }

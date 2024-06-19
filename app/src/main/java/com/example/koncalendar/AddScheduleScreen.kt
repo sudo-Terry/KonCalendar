@@ -11,9 +11,12 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.koncalendar.models.Schedule
@@ -77,12 +80,13 @@ fun AddScheduleScreen(
 
     Column(modifier = Modifier.padding(16.dp)) {
         Button(onClick = { navController.popBackStack() },
-            modifier = Modifier.size(48.dp),
-            shape = RoundedCornerShape(16.dp)) {
+            shape = RoundedCornerShape(16.dp),
+            modifier = Modifier.padding(bottom = 10.dp)
+        ) {
             Image(
                 painter = painterResource(id = R.drawable.baseline_arrow_back_24),
                 contentDescription = "Back arrow",
-                modifier = Modifier.size(24.dp)
+                modifier = Modifier.size(24.dp),
             )
         }
         TextField(
