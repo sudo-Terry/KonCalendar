@@ -10,6 +10,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -21,13 +25,14 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            AppContent(auth)
+            val navController = rememberNavController()
+            AppContent(auth, navController)
         }
     }
 }
 
 @Composable
-fun AppContent(auth: FirebaseAuth) {
+fun AppContent(auth: FirebaseAuth, navController: NavHostController) {
     var showSplashScreen by remember { mutableStateOf(true) }
 
     LaunchedEffect(showSplashScreen) {
@@ -41,7 +46,16 @@ fun AppContent(auth: FirebaseAuth) {
                 showSplashScreen = false
             }
         } else {
-            AuthOrMainScreen(auth)
+            NavHost(navController = navController, startDestination = "authOrMain") {
+                composable("authOrMain") {
+                    AuthOrMainScreen(auth, navController)
+                }
+                composable("main") {
+                    MainScreen(auth.currentUser!!, navController, onSignOut = { auth.signOut() })
+                }
+                composable("categorySharing") { CategorySharingScreen() }
+                composable("addSchedule") { AddScheduleScreen() }
+            }
         }
     }
 }

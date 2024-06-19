@@ -52,6 +52,7 @@ import java.util.Locale
 @Composable
 fun MainScreen(
     user: FirebaseUser,
+    navController: NavHostController,
     onSignOut: () -> Unit,
     calendarViewModel: CalendarViewModel = viewModel(),
     sharingViewModel: CategorySharingViewModel = viewModel()
@@ -60,10 +61,8 @@ fun MainScreen(
     val selectedView by calendarViewModel.selectedView.observeAsState("Monthly")
     val schedules by calendarViewModel.schedules.observeAsState(emptyList())
     val categories by calendarViewModel.categories.observeAsState(emptyList())
-    val sharedWith by sharingViewModel.sharedWith.observeAsState(emptyList())
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
-    var selectedTab by remember{ mutableStateOf(0) }
 
     LaunchedEffect(user.uid) {
         val firestore = FirebaseFirestore.getInstance()
@@ -146,6 +145,14 @@ fun MainScreen(
                     }) {
                         Text("일정 내려받기")
                     }
+                    Button(onClick = {
+                        scope.launch {
+                            navController.navigate("categorySharing")
+                            drawerState.close()
+                        }
+                    }) {
+                        Text("사용자간 카테고리 공유")
+                    }
                 }
             }
         },
@@ -161,25 +168,9 @@ fun MainScreen(
                         }
                     )
                 },
-                bottomBar = {
-                    BottomNavigation {
-                        BottomNavigationItem(
-                            icon = { Icon(Icons.Default.Menu, contentDescription = "Categories") },
-                            label = { Text("Categories") },
-                            selected = selectedTab == 0,
-                            onClick = { selectedTab = 0 }
-                        )
-                        BottomNavigationItem(
-                            icon = { Icon(Icons.Default.Menu, contentDescription = "Share Category") },
-                            label = { Text("Share Category") },
-                            selected = selectedTab == 1,
-                            onClick = { selectedTab = 1 }
-                        )
-                    }
-                },
                 floatingActionButton = {
                     FloatingActionButton(onClick = {
-                        //여기에 navigation 설정 해야 할거같은데.. 아직 못했어요..
+                        navController.navigate("addSchedule")
                     }) {
                         Icon(Icons.Default.Add, contentDescription = "Add Schedule")
                     }
@@ -191,33 +182,29 @@ fun MainScreen(
                             .fillMaxSize()
                             .padding(padding)
                     ) {
-                        if (selectedTab == 0) {
-                            Column(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .padding(16.dp)
-                                    .align(Alignment.Center)
-                            ) {
-                                userProfile.value?.let {
-                                    Text("Welcome, ${it.firstName} ${it.lastName}!")
-                                }
-                                Spacer(modifier = Modifier.height(16.dp))
-                                Button(
-                                    onClick = { onSignOut() },
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .height(50.dp)
-                                ) {
-                                    Text("Sign Out")
-                                }
-                                when (selectedView) {
-                                    "Daily" -> DailyView(schedules)
-                                    "Weekly" -> WeeklyView(schedules)
-                                    "Monthly" -> MonthlyView(schedules)
-                                }
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(16.dp)
+                                .align(Alignment.Center)
+                        ) {
+                            userProfile.value?.let {
+                                Text("Welcome, ${it.firstName} ${it.lastName}!")
                             }
-                        } else {
-                            CategorySharingSection(viewModel = sharingViewModel)
+                            Spacer(modifier = Modifier.height(16.dp))
+                            Button(
+                                onClick = { onSignOut() },
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(50.dp)
+                            ) {
+                                Text("Sign Out")
+                            }
+                            when (selectedView) {
+                                "Daily" -> DailyView(schedules)
+                                "Weekly" -> WeeklyView(schedules)
+                                "Monthly" -> MonthlyView(schedules)
+                            }
                         }
                     }
                 }
@@ -225,42 +212,11 @@ fun MainScreen(
         }
     )
 }
+
 @Composable
 fun CategoryButton(category: CalendarCategory, viewModel: CalendarViewModel) {
     Button(onClick = { viewModel.setCategory(category.id) }) {
         Text(category.title)
-    }
-}
-
-@Composable
-fun CategorySharingSection(viewModel: CategorySharingViewModel) {
-    var categoryId by remember { mutableStateOf("") }
-    var userId by remember { mutableStateOf("") }
-
-    Column(modifier = Modifier.fillMaxWidth()) {
-        TextField(
-            value = categoryId,
-            onValueChange = { categoryId = it },
-            label = { Text("Category ID") }
-        )
-        TextField(
-            value = userId,
-            onValueChange = { userId = it },
-            label = { Text("User ID") }
-        )
-        Button(onClick = {
-            viewModel.setCategoryId(categoryId)
-            viewModel.setUserId(userId)
-            viewModel.shareCategory()
-        }) {
-            Text("Share Category")
-        }
-        Text("Shared with:")
-        LazyColumn {
-            items(viewModel.sharedWith.value ?: emptyList()) { sharing ->
-                Text("User ID: ${sharing.userId}")
-            }
-        }
     }
 }
 
@@ -315,4 +271,3 @@ fun MonthlyView(schedules: List<Schedule>) {
         }
     }
 }
-
