@@ -80,6 +80,7 @@ class CalendarViewModel : ViewModel() {
                 Log.d(CategorySharingUtils.TAG, "Schedule added: $newSchedule")
             }
         }
+        fetchSchedules()
     }
 
     fun deleteSchedule(scheduleId: String) {
@@ -89,6 +90,7 @@ class CalendarViewModel : ViewModel() {
                 Log.d(CategorySharingUtils.TAG, "Schedule deleted: $scheduleId")
             }
         }
+        fetchSchedules()
     }
 
     companion object {
