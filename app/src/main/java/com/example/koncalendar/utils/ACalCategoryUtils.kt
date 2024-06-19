@@ -1,6 +1,7 @@
 package com.example.koncalendar.utils
 
 import android.content.Context
+import android.text.TextUtils.substring
 import android.util.Log
 import com.example.koncalendar.models.CalendarCategory
 import com.example.koncalendar.models.Schedule
@@ -67,36 +68,6 @@ object ACalCategoryUtils {
             Log.w(TAG, "Error creating or updating document", e)
             null
         }
-
-
-//        val docRef = firestore.collection("calendar_category").document(calendarCategory.id)
-//
-//
-//        // Check if the document exists
-//        docRef.get().addOnSuccessListener { document ->
-//            if (document.exists()) {
-//                // If the document exists, update it
-//                docRef.set(calendarCategory)
-//                    .addOnSuccessListener {
-//                        Log.d(TAG, "DocumentSnapshot successfully updated!")
-//                    }
-//                    .addOnFailureListener { e ->
-//                        Log.w(TAG, "Error updating document", e)
-//                    }
-//            } else {
-//                // If the document does not exist, create it
-//                docRef.set(calendarCategory)
-//                    .addOnSuccessListener {
-//                        Log.d(TAG, "DocumentSnapshot successfully created!")
-//                    }
-//                    .addOnFailureListener { e ->
-//                        Log.w(TAG, "Error creating document", e)
-//                    }
-//            }
-//        }.addOnFailureListener { e ->
-//            Log.w(TAG, "Error getting document", e)
-//        }
-//        return calendarCategory
     }
 
     suspend fun loadSchedulesFromAsset(context: Context, userId: String): List<Schedule>? {
@@ -120,15 +91,21 @@ object ACalCategoryUtils {
             val end = jsonObject.get("End").asString
             val subject = jsonObject.get("Subject").asString
             val location = jsonObject.getAsJsonObject("Location").get("DisplayName").asString
+            val startDate = start.substring(0, 10)
+            val endDate = end.substring(0,10)
 
             Schedule(
                 id = "",
-                startDate = start,
-                endDate = end,
+                startDate = startDate,
+                endDate = endDate,
                 title = subject,
                 categoryId = categoryId,
                 userId = userId,
-                location = location
+                location = location,
+                startTime = "00:00:00",
+                endTime = "00:00:00",
+                frequency = "",
+                description = ""
             )
         }
     }
