@@ -2,6 +2,7 @@ package com.example.koncalendar
 
 import android.content.Context
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -113,7 +114,7 @@ fun MainScreen(
                 modifier = Modifier.width(280.dp)
             ){
                 Column (
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.weight(1f).padding(10.dp)
                 ) {
                     Text("캘린더 레이아웃 선택", modifier = Modifier.padding(16.dp))
                     Button(onClick = {
@@ -435,22 +436,16 @@ fun DayContentForMonth(
                 text = day.date.dayOfMonth.toString(),
                 style = TextStyle(fontWeight = FontWeight.Bold, color = textColor)
             )
-            relevantSchedules.take(3).forEach { schedule ->
+            relevantSchedules.take(1).forEach { schedule ->
                 val color = categories.find { it.id == schedule.categoryId }?.color?.let {
                     Color(
                         android.graphics.Color.parseColor(it)
                     )
-                } ?: colorResource(id = R.color.example_6_month_bg_color3)
+                } ?: colorResource(id = R.color.example_1_white)
                 Box(
                     modifier = Modifier
                         .size(16.dp)
                         .background(color, MaterialTheme.shapes.small)
-                )
-            }
-            if (relevantSchedules.size > 3) {
-                Text(
-                    "+${relevantSchedules.size - 3} more",
-                    style = TextStyle(fontSize = 12.sp, color = Color.Gray)
                 )
             }
         }
@@ -486,7 +481,7 @@ fun DayContentForWeek(
                 text = day.date.dayOfMonth.toString(),
                 style = TextStyle(fontWeight = FontWeight.Bold, color = textColor)
             )
-            relevantSchedules.take(3).forEach { schedule ->
+            relevantSchedules.take(1).forEach { schedule ->
                 val color = categories.find { it.id == schedule.categoryId }?.color?.let {
                     Color(
                         android.graphics.Color.parseColor(it)
@@ -498,35 +493,37 @@ fun DayContentForWeek(
                         .background(color, MaterialTheme.shapes.small)
                 )
             }
-            if (relevantSchedules.size > 3) {
-                Text(
-                    "+${relevantSchedules.size - 3} more",
-                    style = TextStyle(fontSize = 12.sp, color = Color.Gray)
-                )
-            }
         }
     }
 }
 
 @Composable
 fun ScheduleItem(schedule: Schedule, colorHex: String?, viewModel: CalendarViewModel) {
-    val color = colorHex?.let { Color(android.graphics.Color.parseColor(it)) } ?: colorResource(id = R.color.example_6_month_bg_color3)
+    val color = colorHex?.let { Color(android.graphics.Color.parseColor(it)) } ?: colorResource(id = R.color.white)
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp),
+            .padding(8.dp)
+            .border(
+                2.dp,
+                color = colorResource(id = R.color.example_6_month_bg_color),
+                shape = RoundedCornerShape(5)
+            ),
         colors = CardDefaults.cardColors(containerColor = color)
     ) {
         Column(modifier = Modifier.padding(8.dp)) {
             Text(schedule.title, style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 18.sp))
             Text("${schedule.startTime} - ${schedule.endTime}")
-            if (schedule.location != null) Text("위치: ${schedule.location}")
-            if (schedule.description != null) Text("설명: ${schedule.description}")
+            if (schedule.location?.isNotEmpty() == true) Text("위치: ${schedule.location}")
+            if (schedule.description?.isNotEmpty() == true) Text("설명: ${schedule.description}")
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            Button(onClick = { viewModel.deleteSchedule(schedule.id) }) {
-                Text("Delete Schedule")
+            Button(
+                onClick = { viewModel.deleteSchedule(schedule.id) },
+                colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.pastel_red))
+            ) {
+                Text("일정 삭제하기")
             }
         }
     }
