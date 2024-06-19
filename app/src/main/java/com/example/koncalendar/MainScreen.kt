@@ -478,17 +478,17 @@ fun DayContentForWeek(
 @Composable
 fun ScheduleItem(schedule: Schedule, colorHex: String?, viewModel: CalendarViewModel) {
     val color = colorHex?.let { Color(android.graphics.Color.parseColor(it)) } ?: colorResource(id = R.color.white)
-    val color_Synapse = Color(0xFF98FB98)
+    val color_border = Color(0xFF2E8B57)
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
             .border(
                 2.dp,
-                color_Synapse,
+                color_border,
                 shape = RoundedCornerShape(5)
             ),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFF2E8B57))
+        colors = CardDefaults.cardColors(containerColor = Color(0xFF5DC19B))
     ) {
         Column(modifier = Modifier.padding(8.dp)) {
             Text(schedule.title, style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 18.sp))
@@ -500,7 +500,7 @@ fun ScheduleItem(schedule: Schedule, colorHex: String?, viewModel: CalendarViewM
 
             Button(
                 onClick = { viewModel.deleteSchedule(schedule.id) },
-                colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.pastel_red))
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFA8072))
             ) {
                 Text("일정 삭제하기")
             }
