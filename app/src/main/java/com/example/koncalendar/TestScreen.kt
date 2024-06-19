@@ -50,6 +50,20 @@ fun TestScreen(modifier: Modifier = Modifier) {
         frequency = "daily" // weekly, monthly
     )
 
+    val sampleSchedule1 = Schedule(
+        "",
+        "2024-06-20T23:00:14",
+        "2024-06-20T23:59:59",
+        "2024-06-20",
+        "2024-06-20",
+        "Test Schedule",
+        "categoryId123",
+        "jeonjunil12@gmail.com",
+        location = "Test Location",
+        description = "Test Description",
+        frequency = "daily" // weekly, monthly
+    )
+
     Column(modifier) {
         Button(onClick = {
             coroutineScope.launch {
@@ -121,7 +135,7 @@ fun TestScreen(modifier: Modifier = Modifier) {
         // Create and Fetch Schedule Button
         Button(onClick = {
             coroutineScope.launch {
-                val docRef = ScheduleUtils.createSchedule(sampleSchedule)
+                val docRef = ScheduleUtils.createSchedule(sampleSchedule1)
                 if (docRef != null) {
                     testSchedule = ScheduleUtils.getScheduleByDocName(docRef.id)
                 }

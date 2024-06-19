@@ -99,10 +99,10 @@ fun MainScreen(
         drawerContent = {
             ModalDrawerSheet {
                 Column {
-//                    Text("일간, 주간, 월간", modifier = Modifier.padding(16.dp))
-//                    Button(onClick = { calendarViewModel.setView("Daily") }) { Text("일") }
-//                    Button(onClick = { calendarViewModel.setView("Weekly") }) { Text("주") }
-//                    Button(onClick = { calendarViewModel.setView("Monthly") }) { Text("월") }
+                    Text("일간, 주간, 월간", modifier = Modifier.padding(16.dp))
+                    Button(onClick = { calendarViewModel.setView("Daily") }) { Text("일") }
+                    Button(onClick = { calendarViewModel.setView("Weekly") }) { Text("주") }
+                    Button(onClick = { calendarViewModel.setView("Monthly") }) { Text("월") }
                     Divider(modifier = Modifier.padding(vertical = 8.dp))
                     Text("일정", modifier = Modifier.padding(16.dp))
                     categories.forEach { category ->
@@ -148,8 +148,11 @@ fun MainScreen(
                 },
                 content = { paddingValues ->
                     Column(Modifier.padding(paddingValues)) {
-                        CalendarTabs(categories, schedules, selectedDate, onDateChange = { selectedDate = it }, viewModel = calendarViewModel
-                        )
+                        when (selectedView) {
+                            "Daily" -> DayCalendarScreen(categories, schedules, selectedDate, onDateChange = { selectedDate = it }, viewModel = calendarViewModel)
+                            "Weekly" -> WeekCalendarScreen(categories, schedules, selectedDate, onDateChange = { selectedDate = it }, viewModel = calendarViewModel)
+                            "Monthly" -> MonthCalendarScreen(categories, schedules, selectedDate, onDateChange = { selectedDate = it }, viewModel = calendarViewModel)
+                        }
                     }
                 }
             )

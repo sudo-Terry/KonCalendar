@@ -58,7 +58,12 @@ fun AppContent(auth: FirebaseAuth, navController: NavHostController) {
                     }
                 }
                 composable("main") {
-                    AuthOrMainScreen(auth, navController)
+                    MainScreen(auth.currentUser!!, navController, onSignOut = {
+                        auth.signOut()
+                        navController.navigate("auth") {
+                            popUpTo("main") { inclusive = true }
+                        }
+                    })
                 }
                 composable("categorySharing") { CategorySharingScreen() }
                 composable("addSchedule") { AddScheduleScreen() }
