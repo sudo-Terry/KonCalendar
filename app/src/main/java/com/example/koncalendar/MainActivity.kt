@@ -66,7 +66,7 @@ fun AppContent(auth: FirebaseAuth, navController: NavHostController) {
                     })
                 }
                 composable("categorySharing") { CategorySharingScreen() }
-                composable("addSchedule") { AddScheduleScreen() }
+                composable("addSchedule") { AddScheduleScreen(navController) }
             }
         }
     }
