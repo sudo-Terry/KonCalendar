@@ -109,17 +109,29 @@ object ACalCategoryUtils {
             )
         }
     }
-    fun saveSchedulesToFirestore(schedules: List<Schedule>) {
+    suspend fun saveSchedulesToFirestore(schedules: List<Schedule>) {
         val collectionRef = firestore.collection("schedules")
 
         schedules.forEach { schedule ->
-            collectionRef.add(schedule)
-                .addOnSuccessListener { documentReference ->
-                    Log.d(TAG, "DocumentSnapshot successfully written with ID: ${documentReference.id}")
-                }
-                .addOnFailureListener { e ->
-                    Log.w(TAG, "Error writing document", e)
-                }
+            val existingSchedules = collectionRef
+                .whereEqualTo("userId", schedule.userId)
+                .whereEqualTo("categoryId", schedule.categoryId)
+                .whereEqualTo("startDate", schedule.startDate)
+                .whereEqualTo("endDate", schedule.endDate)
+                .get()
+                .await()
+
+            if (existingSchedules.isEmpty) {
+                collectionRef.add(schedule)
+                    .addOnSuccessListener { documentReference ->
+                        Log.d(TAG, "DocumentSnapshot successfully written with ID: ${documentReference.id}")
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w(TAG, "Error writing document", e)
+                    }
+            } else {
+                Log.d(TAG, "Schedule with the same userId, categoryId, startDate, and endDate already exists.")
+            }
         }
     }
 
