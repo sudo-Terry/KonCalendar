@@ -27,8 +27,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val navController = rememberNavController()
-//            AppContent(auth, navController)
-            TestScreen(this)
+            AppContent(auth, navController)
         }
     }
 }
