@@ -101,12 +101,23 @@ fun MainScreen(
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
-            ModalDrawerSheet {
+            ModalDrawerSheet (
+                modifier = Modifier.width(280.dp)
+            ){
                 Column {
-                    Text("일간, 주간, 월간", modifier = Modifier.padding(16.dp))
-                    Button(onClick = { calendarViewModel.setView("Daily") }) { Text("일") }
-                    Button(onClick = { calendarViewModel.setView("Weekly") }) { Text("주") }
-                    Button(onClick = { calendarViewModel.setView("Monthly") }) { Text("월") }
+                    Text("캘린더 레이아웃 선택", modifier = Modifier.padding(16.dp))
+                    Button(onClick = {
+                        calendarViewModel.setView("Daily")
+                        scope.launch {
+                            drawerState.close()
+                        }
+                    }) { Text("Daily View") }
+                    Button(onClick = {
+                        calendarViewModel.setView("Monthly")
+                        scope.launch {
+                            drawerState.close()
+                        }
+                    }) { Text("Monthly View") }
                     Divider(modifier = Modifier.padding(vertical = 8.dp))
                     Text("일정", modifier = Modifier.padding(16.dp))
                     categories.forEach { category ->
