@@ -127,7 +127,7 @@ fun TestScreen(context: Context)
         // Create and Fetch Schedule Button
         Button(onClick = {
             coroutineScope.launch {
-                val docRef = ScheduleUtils.createSchedule(sampleSchedule)
+                val docRef = ScheduleUtils.createSchedule(sampleSchedule1)
                 if (docRef != null) {
                     testSchedule = ScheduleUtils.getScheduleByDocName(docRef.id)
                 }
