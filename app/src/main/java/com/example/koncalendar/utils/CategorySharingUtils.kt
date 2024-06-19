@@ -9,7 +9,7 @@ import kotlinx.coroutines.tasks.await
 object CategorySharingUtils {
 
     private val firestore = FirebaseFirestore.getInstance()
-    private const val TAG = "CategorySharingUtils"
+    const val TAG = "CategorySharingUtils"
 
     suspend fun createCategorySharing(categorySharing: CategorySharing): CategorySharing? {
         return try {
