@@ -35,6 +35,9 @@ import com.example.koncalendar.utils.signIn
 import com.example.koncalendar.utils.signUp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalFocusManager
 
 @Composable
 fun AuthScreen(auth: FirebaseAuth, onSignedIn: (FirebaseUser) -> Unit) {
@@ -47,9 +50,16 @@ fun AuthScreen(auth: FirebaseAuth, onSignedIn: (FirebaseUser) -> Unit) {
     var myErrorMessage by remember { mutableStateOf<String?>(null) }
 
     val imagePainter = painterResource(id = R.drawable.back_img)
+    val focusManager = LocalFocusManager.current
 
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .pointerInput(Unit) {
+                detectTapGestures(onTap = {
+                    focusManager.clearFocus()
+                })
+            }
     ) {
         Image(
             painter = imagePainter,
@@ -81,7 +91,7 @@ fun AuthScreen(auth: FirebaseAuth, onSignedIn: (FirebaseUser) -> Unit) {
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(8.dp),
-                        label = { Text("First Name") },
+                        label = { Text("이름") },
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     TextField(
@@ -90,7 +100,7 @@ fun AuthScreen(auth: FirebaseAuth, onSignedIn: (FirebaseUser) -> Unit) {
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(8.dp),
-                        label = { Text("Last Name") },
+                        label = { Text("성") },
                     )
                 }
                 Spacer(modifier = Modifier.height(16.dp))
@@ -100,7 +110,7 @@ fun AuthScreen(auth: FirebaseAuth, onSignedIn: (FirebaseUser) -> Unit) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(8.dp),
-                    label = { Text("Email") },
+                    label = { Text("메일 주소를 입력해 주세요") },
                     leadingIcon = { Icon(Icons.Default.Email, contentDescription = null) },
                     keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Email),
                 )
@@ -111,7 +121,7 @@ fun AuthScreen(auth: FirebaseAuth, onSignedIn: (FirebaseUser) -> Unit) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(8.dp),
-                    label = { Text("Password") },
+                    label = { Text("비밀번호를 입력해 주세요") },
                     leadingIcon = { Icon(Icons.Default.Lock, contentDescription = null) },
                     visualTransformation = if (isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                     keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Password),
@@ -147,12 +157,12 @@ fun AuthScreen(auth: FirebaseAuth, onSignedIn: (FirebaseUser) -> Unit) {
                         .padding(8.dp),
                 ) {
                     Text(
-                        text = if (isSignIn) "Sign In" else "Sign Up",
+                        text = if (isSignIn) "로그인" else "회원 가입",
                         fontSize = 18.sp,
                     )
                 }
                 Spacer(modifier = Modifier.height(16.dp))
-                val linkText = if (isSignIn) "Don't have an account? Sign Up" else "Already have an account? Sign In"
+                val linkText = if (isSignIn) "회원 가입하기" else "로그인 화면으로 이동하기"
                 Text(
                     text = buildAnnotatedString {
                         withStyle(style = SpanStyle(color = Color.Blue, textDecoration = TextDecoration.Underline)) {
