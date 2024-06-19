@@ -1,11 +1,13 @@
 package com.example.koncalendar
 
+import android.content.Context
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.navigation.NavHostController
 import com.example.koncalendar.models.CalendarCategory
 import com.example.koncalendar.models.CategorySharing
 import com.example.koncalendar.models.Schedule
@@ -13,10 +15,12 @@ import com.example.koncalendar.utils.ACalCategoryUtils
 import com.example.koncalendar.utils.CalendarCategoryUtils
 import com.example.koncalendar.utils.CategorySharingUtils
 import com.example.koncalendar.utils.ScheduleUtils
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.launch
 
 @Composable
-fun TestScreen(modifier: Modifier = Modifier) {
+fun TestScreen(context: Context)
+{
     var testCalendarCategory by remember { mutableStateOf<CalendarCategory?>(null) }
     var testCategorySharing by remember { mutableStateOf<CategorySharing?>(null) }
     var testSchedule by remember { mutableStateOf<Schedule?>(null) }
@@ -52,7 +56,7 @@ fun TestScreen(modifier: Modifier = Modifier) {
         frequency = "daily" // weekly, monthly
     )
 
-    Column(modifier) {
+    Column(modifier=Modifier) {
         Button(onClick = {
             coroutineScope.launch {
                 val docRef = CalendarCategoryUtils.createCalendarCategory(sampleCalendarCategory)
@@ -163,7 +167,7 @@ fun TestScreen(modifier: Modifier = Modifier) {
 
         Button(onClick = {
             coroutineScope.launch {
-                val docRef = ACalCategoryUtils.createOrUpdate_ACalCategory()
+                val docRef = ACalCategoryUtils.createOrUpdate_ACalCategory("testACuser")
                 if (docRef != null) {
                     testACalendarCategory = CalendarCategoryUtils.getCalendarCategoryByDocName(docRef.id)
                 }
@@ -176,5 +180,16 @@ fun TestScreen(modifier: Modifier = Modifier) {
         Text(text = "Title: ${testACalendarCategory?.title ?: "Loading..."}")
         Text(text = "Title: ${testACalendarCategory?.color ?: "Loading..."}")
         Text(text = "Created At: ${testACalendarCategory?.createdAt ?: "Loading..."}")
+
+
+        val acManager = ACalCategoryUtils.AcManager(context)
+
+        Button(onClick = {
+            coroutineScope.launch {
+                acManager.createAndLoadSchedules("testAcUser")
+            }
+        }) {
+            Text("test upload as testAcUser")
+        }
     }
 }

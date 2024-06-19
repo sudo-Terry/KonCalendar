@@ -68,6 +68,7 @@ dependencies {
     implementation(libs.firebase.bom)
     implementation(libs.androidx.runtime.livedata)
     implementation(libs.androidx.material)
+    implementation(libs.gson)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
