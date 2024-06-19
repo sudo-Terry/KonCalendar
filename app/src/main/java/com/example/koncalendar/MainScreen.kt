@@ -7,12 +7,15 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
@@ -114,17 +117,25 @@ fun MainScreen(
                 ) {
                     Text("캘린더 레이아웃 선택", modifier = Modifier.padding(16.dp))
                     Button(onClick = {
-                        calendarViewModel.setView("Daily")
-                        scope.launch {
-                            drawerState.close()
-                        }
-                    }) { Text("Daily View") }
+                            calendarViewModel.setView("Daily")
+                            scope.launch {
+                                drawerState.close()
+                            }
+                        },
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp),
+                        colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.example_6_month_bg_color))
+                    ) { Text("Daily View", color = Color.Black) }
                     Button(onClick = {
-                        calendarViewModel.setView("Monthly")
-                        scope.launch {
-                            drawerState.close()
-                        }
-                    }) { Text("Monthly View") }
+                            calendarViewModel.setView("Monthly")
+                            scope.launch {
+                                drawerState.close()
+                            }
+                        },
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp),
+                        colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.example_6_month_bg_color))
+                    ) { Text("Monthly View", color = Color.Black) }
                     Divider(modifier = Modifier.padding(vertical = 8.dp))
                     Text("일정", modifier = Modifier.padding(16.dp))
                     categories.forEach { category ->
@@ -133,26 +144,30 @@ fun MainScreen(
                     Divider(modifier = Modifier.padding(vertical = 8.dp))
 
                     Button(onClick = {
-                        if (!isButtonClicked) {
-                            isButtonClicked = true
-                        scope.launch {
-                            acManager.createAndLoadSchedules(userId = user.uid)
-                            calendarViewModel.fetchSchedules()
-                            drawerState.close()
-                        }
-                        }
-                    }) {
-                        Text("학사일정 내려받기")
+                            if (!isButtonClicked) {
+                                isButtonClicked = true
+                                scope.launch {
+                                    acManager.createAndLoadSchedules(userId = user.uid)
+                                    calendarViewModel.fetchSchedules()
+                                    drawerState.close()
+                                }
+                            }
+                        },
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp),
+                        colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.example_6_month_bg_color))
+                    ) {
+                        Text("학사일정 내려받기", color = Color.Black)
                     }
                     Divider(modifier = Modifier.padding(vertical = 8.dp))
-                    Button(onClick = {
-                        navController.navigate("categorySharing")
-                        scope.launch {
-                            drawerState.close()
-                        }
-                    }) {
-                        Text("사용자간 카테고리 공유")
-                    }
+//                    Button(onClick = {
+//                        navController.navigate("categorySharing")
+//                        scope.launch {
+//                            drawerState.close()
+//                        }
+//                    }) {
+//                        Text("사용자간 카테고리 공유")
+//                    }
                 }
                 Column {
 //                    Button(
