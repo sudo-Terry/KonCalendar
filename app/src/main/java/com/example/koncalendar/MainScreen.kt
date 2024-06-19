@@ -129,7 +129,7 @@ fun MainScreen(
                     },
                         modifier = Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(12.dp),
-                        colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.example_6_month_bg_color))
+                        colors = ButtonDefaults.buttonColors(containerColor = Color(0XFFA5D6A7))
                     ) { Text("Daily View", color = Color.Black) }
                     Button(onClick = {
                         calendarViewModel.setView("Monthly")
@@ -139,7 +139,7 @@ fun MainScreen(
                     },
                         modifier = Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(12.dp),
-                        colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.example_6_month_bg_color))
+                        colors = ButtonDefaults.buttonColors(containerColor = Color(0XFFA5D6A7))
                     ) { Text("Monthly View", color = Color.Black) }
                     Divider(modifier = Modifier.padding(vertical = 8.dp))
                     Text("일정", modifier = Modifier.padding(16.dp))
@@ -157,7 +157,7 @@ fun MainScreen(
                     },
                         modifier = Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(12.dp),
-                        colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.example_6_month_bg_color))
+                        colors = ButtonDefaults.buttonColors(containerColor = Color(0XFFA5D6A7))
                     ) {
                         Text("학사일정 내려받기", color = Color.Black)
                     }
@@ -399,7 +399,7 @@ fun DayContentForMonth(
             .aspectRatio(1f)
             .padding(4.dp)
             .clip(CircleShape)
-            .background(color = colorResource(R.color.example_6_month_bg_color))
+            .background(color = Color(0xFF81C784))
             .clickable(
                 enabled = day.position == DayPosition.MonthDate,
                 onClick = { onDayClick(day.date) },
@@ -478,16 +478,17 @@ fun DayContentForWeek(
 @Composable
 fun ScheduleItem(schedule: Schedule, colorHex: String?, viewModel: CalendarViewModel) {
     val color = colorHex?.let { Color(android.graphics.Color.parseColor(it)) } ?: colorResource(id = R.color.white)
+    val color_Synapse = Color(0xFF98FB98)
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
             .border(
                 2.dp,
-                color = colorResource(id = R.color.example_6_month_bg_color),
+                color_Synapse,
                 shape = RoundedCornerShape(5)
             ),
-        colors = CardDefaults.cardColors(containerColor = color)
+        colors = CardDefaults.cardColors(containerColor = Color(0xFF2E8B57))
     ) {
         Column(modifier = Modifier.padding(8.dp)) {
             Text(schedule.title, style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 18.sp))
