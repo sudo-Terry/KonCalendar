@@ -104,7 +104,9 @@ fun MainScreen(
             ModalDrawerSheet (
                 modifier = Modifier.width(280.dp)
             ){
-                Column {
+                Column (
+                    modifier = Modifier.weight(1f)
+                ) {
                     Text("캘린더 레이아웃 선택", modifier = Modifier.padding(16.dp))
                     Button(onClick = {
                         calendarViewModel.setView("Daily")
@@ -140,6 +142,13 @@ fun MainScreen(
                         }
                     }) {
                         Text("사용자간 카테고리 공유")
+                    }
+                }
+                Column {
+                    Button(
+                        onClick = { onSignOut() },
+                    ) {
+                        Text("로그아웃")
                     }
                 }
             }
