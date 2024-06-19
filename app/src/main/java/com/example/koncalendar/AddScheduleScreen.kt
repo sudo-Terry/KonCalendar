@@ -2,7 +2,9 @@ package com.example.koncalendar
 
 import android.app.TimePickerDialog
 import android.content.Context
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -10,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
@@ -73,17 +76,30 @@ fun AddScheduleScreen(
     val context = LocalContext.current
 
     Column(modifier = Modifier.padding(16.dp)) {
+        Button(onClick = { navController.popBackStack() },
+            modifier = Modifier.size(48.dp),
+            shape = RoundedCornerShape(16.dp)) {
+            Image(
+                painter = painterResource(id = R.drawable.baseline_arrow_back_24),
+                contentDescription = "Back arrow",
+                modifier = Modifier.size(24.dp)
+            )
+        }
         TextField(
             value = title,
             onValueChange = { title = it },
             label = { Text("일정 제목") },
-            modifier = Modifier.fillMaxWidth().padding(8.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
         )
         TextField(
             value = description,
             onValueChange = { description = it },
             label = { Text("일정 설명") },
-            modifier = Modifier.fillMaxWidth().padding(8.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
         )
         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(8.dp)) {
             Text("Start Date: $startDate")
@@ -117,7 +133,9 @@ fun AddScheduleScreen(
             value = location,
             onValueChange = { location = it },
             label = { Text("위치") },
-            modifier = Modifier.fillMaxWidth().padding(8.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
         )
         Button(
             onClick = {
@@ -142,7 +160,9 @@ fun AddScheduleScreen(
                 }
                 }
             },
-            modifier = Modifier.fillMaxWidth().padding(8.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
         ) {
             Text("일정 추가하기")
         }
