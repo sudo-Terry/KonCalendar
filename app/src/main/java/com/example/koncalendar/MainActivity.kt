@@ -46,15 +46,27 @@ fun AppContent(auth: FirebaseAuth, navController: NavHostController) {
                 showSplashScreen = false
             }
         } else {
-            NavHost(navController = navController, startDestination = "authOrMain") {
-                composable("authOrMain") {
-                    AuthOrMainScreen(auth, navController)
+            NavHost(
+                navController = navController,
+                startDestination = if (auth.currentUser != null) "main" else "auth"
+            ) {
+                composable("auth") {
+                    AuthScreen(auth) { user ->
+                        navController.navigate("main") {
+                            popUpTo("auth") { inclusive = true }
+                        }
+                    }
                 }
                 composable("main") {
-                    MainScreen(auth.currentUser!!, navController, onSignOut = { auth.signOut() })
+                    MainScreen(auth.currentUser!!, navController, onSignOut = {
+                        auth.signOut()
+                        navController.navigate("auth") {
+                            popUpTo("main") { inclusive = true }
+                        }
+                    })
                 }
                 composable("categorySharing") { CategorySharingScreen() }
-                composable("addSchedule") { AddScheduleScreen() }
+                composable("addSchedule") { AddScheduleScreen(navController) }
             }
         }
     }
