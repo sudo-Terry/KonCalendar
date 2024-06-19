@@ -295,14 +295,12 @@ fun MonthCalendarScreen(
 
     Column {
         Text(
-            text = "${
-                state.firstVisibleMonth.yearMonth.format(
-                    DateTimeFormatter.ofPattern(
-                        "MMMM yyyy",
-                        Locale.getDefault()
-                    )
+            text = state.firstVisibleMonth.yearMonth.format(
+                DateTimeFormatter.ofPattern(
+                    "MMMM yyyy",
+                    Locale.getDefault()
                 )
-            }",
+            ),
             style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 20.sp),
             modifier = Modifier.padding(8.dp)
         )
