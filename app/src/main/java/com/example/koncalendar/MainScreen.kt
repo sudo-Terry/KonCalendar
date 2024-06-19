@@ -87,6 +87,7 @@ fun MainScreen(
     val scope = rememberCoroutineScope()
     var selectedDate by remember { mutableStateOf(LocalDate.now()) }
     val acManager = ACalCategoryUtils.AcManager(context)
+    var isButtonClicked by remember { mutableStateOf(false) }
 
     LaunchedEffect(user.uid) {
         val firestore = FirebaseFirestore.getInstance()
@@ -130,11 +131,15 @@ fun MainScreen(
                         CategoryButton(category = category, viewModel = calendarViewModel)
                     }
                     Divider(modifier = Modifier.padding(vertical = 8.dp))
+
                     Button(onClick = {
+                        if (!isButtonClicked) {
+                            isButtonClicked = true
                         scope.launch {
                             acManager.createAndLoadSchedules(userId = user.uid)
                             calendarViewModel.fetchSchedules()
                             drawerState.close()
+                        }
                         }
                     }) {
                         Text("학사일정 내려받기")
