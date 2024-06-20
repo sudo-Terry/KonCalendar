@@ -219,7 +219,9 @@ fun AddScheduleScreen(
             enabled = isFormValid,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(8.dp)
+                .padding(8.dp),
+            shape = RoundedCornerShape(12.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0XFFA5D6A7))
         ) {
             Text("일정 추가하기")
         }
