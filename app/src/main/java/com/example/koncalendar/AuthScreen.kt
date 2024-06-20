@@ -37,8 +37,10 @@ import com.example.koncalendar.utils.signUp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.colorResource
 
 @Composable
 fun AuthScreen(auth: FirebaseAuth, onSignedIn: (FirebaseUser) -> Unit) {
@@ -50,11 +52,11 @@ fun AuthScreen(auth: FirebaseAuth, onSignedIn: (FirebaseUser) -> Unit) {
     var isSignIn by remember { mutableStateOf(true) }
     var myErrorMessage by remember { mutableStateOf<String?>(null) }
 
-    val imagePainter = painterResource(id = R.drawable.back_img)
     val focusManager = LocalFocusManager.current
 
     Box(
         modifier = Modifier
+            .background(color = Color(0xFF5DC19B))
             .fillMaxSize()
             .pointerInput(Unit) {
                 detectTapGestures(onTap = {
@@ -62,13 +64,6 @@ fun AuthScreen(auth: FirebaseAuth, onSignedIn: (FirebaseUser) -> Unit) {
                 })
             }
     ) {
-        Image(
-            painter = imagePainter,
-            contentDescription = null,
-            modifier = Modifier.fillMaxSize(),
-            contentScale = ContentScale.Crop
-        )
-
         Card(
             modifier = Modifier
                 .fillMaxSize()
@@ -156,6 +151,8 @@ fun AuthScreen(auth: FirebaseAuth, onSignedIn: (FirebaseUser) -> Unit) {
                         .fillMaxWidth()
                         .height(60.dp)
                         .padding(8.dp),
+                    shape = RoundedCornerShape(12.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0XFFA5D6A7))
                 ) {
                     Text(
                         text = if (isSignIn) "로그인" else "회원 가입",
