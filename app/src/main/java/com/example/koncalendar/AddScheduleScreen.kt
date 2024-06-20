@@ -5,11 +5,12 @@ import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.TextFieldColors
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -20,7 +21,6 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.koncalendar.models.Schedule
-import com.example.koncalendar.utils.ScheduleUtils
 import com.example.koncalendar.viewmodel.CalendarViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -85,7 +85,8 @@ fun AddScheduleScreen(
     Column(modifier = Modifier.padding(16.dp)) {
         Button(onClick = { navController.popBackStack() },
             shape = RoundedCornerShape(16.dp),
-            modifier = Modifier.padding(bottom = 10.dp)
+            modifier = Modifier.padding(bottom = 10.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0XFFA5D6A7))
         ) {
             Image(
                 painter = painterResource(id = R.drawable.baseline_arrow_back_24),
@@ -117,7 +118,10 @@ fun AddScheduleScreen(
                 .fillMaxWidth()
                 .padding(8.dp)
         )
-        Button(onClick = { showStartDatePicker = true }) {
+        Button(onClick = { showStartDatePicker = true }, modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(12.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0XFFA5D6A7))
+        ) {
             Text("시작일 설정")
         }
         if (startDate.isNotBlank()){
@@ -130,7 +134,11 @@ fun AddScheduleScreen(
                 style = TextStyle(fontSize = 12.sp)
             )
         }
-        Button(onClick = { showEndDatePicker = true }) {
+        Button(onClick = { showEndDatePicker = true },
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(12.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0XFFA5D6A7))
+        ) {
             Text("종료일 설정")
         }
         if (endDate.isNotBlank()){
@@ -143,7 +151,11 @@ fun AddScheduleScreen(
                 style = TextStyle(fontSize = 12.sp)
             )
         }
-        Button(onClick = { showStartTimePicker = true }) {
+        Button(onClick = { showStartTimePicker = true },
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(12.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0XFFA5D6A7))
+        ) {
             Text("시작 시간 설정")
         }
         if (startTime.isNotBlank()){
@@ -156,11 +168,15 @@ fun AddScheduleScreen(
                 style = TextStyle(fontSize = 12.sp)
             )
         }
-        Button(onClick = { showEndTimePicker = true }) {
+        Button(onClick = { showEndTimePicker = true },
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(12.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0XFFA5D6A7))
+        ) {
             Text("종료 시간 설정")
         }
         if (endTime.isNotBlank()){
-            Text("종료 시간: $startTime")
+            Text("종료 시간: $endTime")
         }
         if (endTime.isBlank()) {
             Text(

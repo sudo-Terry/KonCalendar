@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.DrawerDefaults.backgroundColor
 import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -25,6 +26,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.ListItemDefaults.contentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
@@ -193,7 +195,9 @@ fun MainScreen(
                     )
                 },
                 floatingActionButton = {
-                    FloatingActionButton(onClick = { navController.navigate("addSchedule") }) {
+                    FloatingActionButton(onClick = { navController.navigate("addSchedule") },
+                        containerColor = Color(0XFFA5D6A7)
+                    ) {
                         Icon(Icons.Default.Add, contentDescription = "Add Schedule")
                     }
                 },
