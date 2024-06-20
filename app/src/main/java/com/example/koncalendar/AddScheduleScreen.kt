@@ -3,6 +3,7 @@ package com.example.koncalendar
 import android.app.TimePickerDialog
 import android.content.Context
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.TextFieldColors
@@ -13,7 +14,9 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
@@ -82,7 +85,13 @@ fun AddScheduleScreen(
         title.isNotBlank() && startDate.isNotBlank() && endDate.isNotBlank() && startTime.isNotBlank() && endTime.isNotBlank()
     }
 
-    Column(modifier = Modifier.padding(16.dp)) {
+    val focusManager = LocalFocusManager.current
+
+    Column(modifier = Modifier.padding(16.dp).pointerInput(Unit) {
+        detectTapGestures(onTap = {
+            focusManager.clearFocus()
+        })
+    }) {
         Button(onClick = { navController.popBackStack() },
             shape = RoundedCornerShape(16.dp),
             modifier = Modifier.padding(bottom = 10.dp),
